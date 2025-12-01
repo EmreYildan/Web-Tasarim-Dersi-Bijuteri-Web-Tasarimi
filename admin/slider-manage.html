@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Yönetimi - Admin Panel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        
+        .admin-header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-layout {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .admin-sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .admin-sidebar ul {
+            list-style: none;
+        }
+        
+        .admin-sidebar ul li {
+            margin: 15px 0;
+        }
+        
+        .admin-sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .admin-sidebar ul li a:hover,
+        .admin-sidebar ul li a.active {
+            background: #34495e;
+        }
+        
+        .admin-content {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: #fff;
+        }
+        
+        .btn-success {
+            background: #2ecc71;
+            color: #fff;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+        
+        .sliders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .slider-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .slider-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .slider-card-content {
+            padding: 15px;
+        }
+        
+        .slider-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .slider-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .slider-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .logout-btn {
+            background: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .order-badge {
+            display: inline-block;
+            background: #3498db;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1>Emre Mücevherat - Slider Yönetimi</h1>
+        <button class="logout-btn" onclick="logout()">Çıkış Yap</button>
+    </div>
+    
+    <div class="admin-layout">
+        <nav class="admin-sidebar">
+            <ul>
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="products-manage.html">📦 Ürün Yönetimi</a></li>
+                <li><a href="announcements-manage.html">📢 Duyuru Yönetimi</a></li>
+                <li><a href="slider-manage.html" class="active">🎬 Slider Yönetimi</a></li>
+                <li><a href="../Html/index.html" target="_blank">🌐 Siteyi Görüntüle</a></li>
+            </ul>
+        </nav>
+        
+        <main class="admin-content">
+            <h2>Slider Ekleme / Düzenleme</h2>
+            <p style="margin-bottom: 20px; color: #666;">Ana sayfada gösterilecek otomatik değişen slider'ları yönetin. En az 3 slider eklemeniz önerilir.</p>
+            
+            <div class="form-container">
+                <form id="sliderForm" onsubmit="return saveSlider(event)">
+                    <input type="hidden" id="sliderId">
+                    
+                    <div class="form-group">
+                        <label for="sliderTitle">Slider Başlığı *</label>
+                        <input type="text" id="sliderTitle" required placeholder="Örn: Yeni Koleksiyon">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sliderDescription">Kısa Açıklama</label>
+                        <textarea id="sliderDescription" placeholder="Slider üzerinde görünecek kısa açıklama..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sliderImage">Resim URL *</label>
+                        <input type="text" id="sliderImage" required placeholder="../images/slider1.jpg">
+                        <small>Önerilen boyut: 1200x500 px</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sliderLink">Bağlantı URL *</label>
+                        <input type="text" id="sliderLink" required placeholder="product.html">
+                        <small>Slider'a tıklandığında gidilecek sayfa (ör: product.html, necklaces.html)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sliderOrder">Sıra Numarası *</label>
+                        <input type="number" id="sliderOrder" required min="1" placeholder="1">
+                        <small>Slider'ların gösterim sırası (küçükten büyüğe)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="sliderActive" checked>
+                            Aktif (Ana sayfada göster)
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Slider Ekle</button>
+                    <button type="button" class="btn btn-danger" onclick="resetForm()">Formu Temizle</button>
+                </form>
+            </div>
+            
+            <h3 style="margin-bottom: 20px;">Mevcut Slider'lar</h3>
+            <div class="sliders-grid" id="slidersGrid">
+                <!-- Slider'lar buraya dinamik olarak eklenecek -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Login kontrolü
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        let editingSliderId = null;
+
+        // Slider'ları yükle
+        function loadSliders() {
+            const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+            const grid = document.getElementById('slidersGrid');
+            
+            if (sliders.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">Henüz slider eklenmemiş. En az 3 slider eklemeniz önerilir.</p>';
+                return;
+            }
+            
+            // Sıraya göre düzenle
+            const sortedSliders = sliders.sort((a, b) => a.order - b.order);
+            
+            grid.innerHTML = sortedSliders.map((slider, index) => `
+                <div class="slider-card">
+                    <img src="${slider.image}" alt="${slider.title}" onerror="this.src='../images/placeholder.jpg'">
+                    <div class="slider-card-content">
+                        <span class="order-badge">Sıra: ${slider.order}</span>
+                        <h3>${slider.title}</h3>
+                        ${slider.description ? `<p>${slider.description}</p>` : ''}
+                        <p style="font-size: 12px; color: #999;">
+                            Bağlantı: ${slider.link}<br>
+                            Durum: <strong style="color: ${slider.active ? '#2ecc71' : '#e74c3c'};">${slider.active ? 'Aktif' : 'Pasif'}</strong>
+                        </p>
+                        <div class="slider-card-actions">
+                            <button onclick="editSlider(${index})" class="btn btn-success" style="padding: 8px 16px; flex: 1;">Düzenle</button>
+                            <button onclick="deleteSlider(${index})" class="btn btn-danger" style="padding: 8px 16px; flex: 1;">Sil</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function saveSlider(event) {
+            event.preventDefault();
+            
+            const slider = {
+                id: editingSliderId || Date.now(),
+                title: document.getElementById('sliderTitle').value,
+                description: document.getElementById('sliderDescription').value,
+                image: document.getElementById('sliderImage').value,
+                link: document.getElementById('sliderLink').value,
+                order: parseInt(document.getElementById('sliderOrder').value),
+                active: document.getElementById('sliderActive').checked,
+                createdAt: editingSliderId ? undefined : new Date().toISOString()
+            };
+            
+            let sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+            
+            if (editingSliderId) {
+                const index = sliders.findIndex(s => s.id === editingSliderId);
+                sliders[index] = { ...sliders[index], ...slider };
+                alert('Slider başarıyla güncellendi!');
+            } else {
+                sliders.push(slider);
+                alert('Slider başarıyla eklendi!');
+            }
+            
+            localStorage.setItem('sliders', JSON.stringify(sliders));
+            resetForm();
+            loadSliders();
+            
+            return false;
+        }
+
+        function editSlider(index) {
+            const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+            const sortedSliders = sliders.sort((a, b) => a.order - b.order);
+            const slider = sortedSliders[index];
+            
+            editingSliderId = slider.id;
+            document.getElementById('sliderTitle').value = slider.title;
+            document.getElementById('sliderDescription').value = slider.description || '';
+            document.getElementById('sliderImage').value = slider.image;
+            document.getElementById('sliderLink').value = slider.link;
+            document.getElementById('sliderOrder').value = slider.order;
+            document.getElementById('sliderActive').checked = slider.active;
+            
+            document.getElementById('submitBtn').textContent = 'Slider Güncelle';
+            window.scrollTo(0, 0);
+        }
+
+        function deleteSlider(index) {
+            if (!confirm('Bu slider\'ı silmek istediğinize emin misiniz?')) return;
+            
+            let sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+            const sortedSliders = sliders.sort((a, b) => a.order - b.order);
+            const sliderToDelete = sortedSliders[index];
+            
+            sliders = sliders.filter(s => s.id !== sliderToDelete.id);
+            localStorage.setItem('sliders', JSON.stringify(sliders));
+            
+            alert('Slider başarıyla silindi!');
+            loadSliders();
+        }
+
+        function resetForm() {
+            document.getElementById('sliderForm').reset();
+            document.getElementById('sliderActive').checked = true;
+            editingSliderId = null;
+            document.getElementById('submitBtn').textContent = 'Slider Ekle';
+        }
+
+        function logout() {
+            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Sayfa yüklendiğinde slider'ları göster
+        loadSliders();
+    </script>
+</body>
+</html>

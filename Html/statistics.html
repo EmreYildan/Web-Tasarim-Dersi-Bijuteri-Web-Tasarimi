@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>Sayılarla Emre Mücevherat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" media="all" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .statistics-page {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .stats-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .stats-intro h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .stats-intro p {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-box .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-box .number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .stat-box .label {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .charts-section {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .charts-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .chart-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
+            <div class="right-links">
+                <ul>
+                    <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
+                    <li><a href="#"><span class="ico-account"></span>Hesap</a></li>
+                    <li><a href="#"><span class="ico-signout"></span>Çıkış</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav id="menu">
+        <div class="container">
+            <div class="trigger"></div>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu">
+                    <a href="products.html">Ürünlerimiz</a>
+                    <ul class="submenu">
+                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
+                        <li><a href="necklaces.html">Kolyeler</a></li>
+                        <li><a href="earrings.html">Küpeler</a></li>
+                        <li><a href="rings.html">Yüzükler</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a href="#birimlerimiz">Birimlerimiz</a>
+                    <ul class="submenu">
+                        <li><a href="text-page.html">Satış Birimi</a></li>
+                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
+                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">Hakkımızda</a></li>
+                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
+                <li><a href="announcements.html">Duyurular</a></li>
+                <li><a href="statistics.html" class="active">İstatistikler</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+                <li><a href="cart.html">Sepet</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li>Sayılarla Emre Mücevherat</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="body">
+        <div class="container">
+            <div class="statistics-page">
+                <div class="stats-intro">
+                    <h1>Sayılarla Emre Mücevherat</h1>
+                    <p>15 yıllık deneyimimizi rakamlarla sizinle paylaşıyoruz</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="icon">👥</div>
+                        <div class="number" id="stat-customers">15,420</div>
+                        <div class="label">Mutlu Müşteri</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="icon">💍</div>
+                        <div class="number" id="stat-products">850+</div>
+                        <div class="label">Benzersiz Tasarım</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="icon">🏪</div>
+                        <div class="number" id="stat-stores">12</div>
+                        <div class="label">Mağaza</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="icon">🏆</div>
+                        <div class="number" id="stat-awards">28</div>
+                        <div class="label">Ulusal Ödül</div>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <h2>Kategori Bazında Satış Dağılımı</h2>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <h2>Yıllara Göre Müşteri Artışı</h2>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <h2>En Çok Tercih Edilen Ürün Tipleri</h2>
+                    <div class="chart-container">
+                        <canvas id="popularChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="cols">
+                <div class="col">
+                    <h3>Frequently Asked Questions</h3>
+                    <ul>
+                        <li><a href="#">Fusce eget dolor adipiscing </a></li>
+                        <li><a href="#">Posuere nisl eu venenatis gravida</a></li>
+                    </ul>
+                </div>
+                <div class="col media">
+                    <h3>Social media</h3>
+                    <ul class="social">
+                        <li><a href="#"><span class="ico ico-fb"></span>Facebook</a></li>
+                        <li><a href="#"><span class="ico ico-tw"></span>Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col contact">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Emre Mücevherat<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
+                    <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
+                </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    // Kategori Dağılımı Chart
+    const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+    new Chart(categoryCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Kolyeler', 'Küpeler', 'Yüzükler', 'Bileklikler', 'Diğer'],
+            datasets: [{
+                data: [35, 28, 22, 10, 5],
+                backgroundColor: [
+                    '#FF6384',
+                    '#36A2EB',
+                    '#FFCE56',
+                    '#4BC0C0',
+                    '#9966FF'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // Yıllık Büyüme Chart
+    const growthCtx = document.getElementById('growthChart').getContext('2d');
+    new Chart(growthCtx, {
+        type: 'line',
+        data: {
+            labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+            datasets: [{
+                label: 'Müşteri Sayısı',
+                data: [3200, 5100, 7800, 10200, 12500, 14100, 15420],
+                borderColor: '#36A2EB',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Popüler Ürünler Chart
+    const popularCtx = document.getElementById('popularChart').getContext('2d');
+    new Chart(popularCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Elmas Kolye', 'İnci Küpe', 'Altın Yüzük', 'Gümüş Bileklik', 'Pırlanta Set'],
+            datasets: [{
+                label: 'Satış Adedi',
+                data: [420, 380, 560, 210, 185],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

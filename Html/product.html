@@ -14,7 +14,7 @@
 
     <header id="header">
         <div class="container">
-            <a href="index.html" id="logo" title="Diana’s jewelry">Diana’s jewelry</a>
+            <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
                     <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
@@ -149,6 +149,12 @@
                     <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
             </div>
             <p class="copy">Copyright 2025 Diana's Jewelry. All rights reserved.</p>
         </div>
@@ -161,5 +167,66 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // =============================
+    // ÜRÜN DETAY YÜKLEME
+    // =============================
+    (function(){
+        // Test verileri yoksa (kullanıcı direkt product.html'e geldiyse) initialize et
+        if(!localStorage.getItem('products')){
+            const fallbackProducts = [
+                { id: 1, name: "Elmas Taşlı Altın Kolye", category: "necklaces", price: 3250, image: "../images/1.jpg", description: "Zarif ve şık altın kolye. 18 ayar altından üretilmiştir. Elmas ağırlığı: 0.25 karat.", features: ["18 ayar altın","0.25 karat elmas","Özel tasarım","Garanti sertifikası"] },
+                { id: 3, name: "Elmas Taşlı Sallantılı Küpe", category: "earrings", price: 2850, image: "../images/3.jpg", description: "Özel günler için ideal sallantılı elmas detaylı küpe.", features: ["14 ayar altın","Elmas detay","Hafif yapı","Rahat kullanım"] },
+                { id: 5, name: "Tek Taş Elmas Yüzük", category: "rings", price: 8500, image: "../images/14.jpg", description: "Nişan ve evlilik teklifleri için klasik tek taş yüzük.", features: ["18 ayar beyaz altın","GIA sertifikalı elmas","1 karat","Özel kutu"] }
+            ];
+            localStorage.setItem('products', JSON.stringify(fallbackProducts));
+        }
+
+        // URL'den id parametresini al
+        function getParam(name){
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+        const productId = parseInt(getParam('id'),10);
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        const product = products.find(p => p.id === productId) || products[0];
+
+        if(product){
+            // Ana container elemanları
+            const titleEl = document.querySelector('.product .details h1');
+            const priceEl = document.querySelector('.product .details h4');
+            const imgEl = document.querySelector('.product .image img');
+            const tabsDesc = document.getElementById('desc');
+            const tabsSpec = document.getElementById('spec');
+            const tabsRet = document.getElementById('ret');
+
+            // İçerikleri doldur
+            titleEl.textContent = product.name;
+            priceEl.textContent = '₺' + parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2});
+            imgEl.src = product.image;
+            imgEl.alt = product.name;
+            if(tabsDesc){
+                tabsDesc.innerHTML = '<p>' + product.description + '</p>';
+            }
+            if(tabsSpec){
+                tabsSpec.innerHTML = '<ul style="padding-left:15px; list-style:disc; line-height:24px;">' +
+                    product.features.map(f => '<li>' + f + '</li>').join('') + '</ul>';
+            }
+            if(tabsRet){
+                tabsRet.innerHTML = '<p>14 gün içinde koşulsuz iade. Sertifika ve fatura ile birlikte gönderim yapılır.</p>';
+            }
+
+            // Quantity - Add to cart buton davranışı (örnek)
+            const addBtn = document.querySelector('.actions .btn-grey');
+            if(addBtn){
+                addBtn.textContent = 'Sepete Ekle';
+                addBtn.addEventListener('click', function(e){
+                    e.preventDefault();
+                    alert(product.name + ' sepete eklendi. (Demo)');
+                });
+            }
+        }
+    })();
+    </script>
 </body>
 </html>

@@ -1,20 +1,64 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="tr">
 <head>
     <meta charset="utf-8">
-    <title>Duyurular - Diana's jewelry</title>
+    <title>Duyurular - Emre Mücevherat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" media="all" href="../css/style.css">
-    <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <style>
+        .announcements-page {
+            padding: 60px 0;
+        }
+        
+        .announcement-full {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .announcement-full h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .announcement-meta {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .announcement-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        
+        .announcement-full .content {
+            line-height: 1.8;
+            color: #666;
+        }
+        
+        .no-announcements {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+    </style>
 </head>
 <body>
 
     <header id="header">
         <div class="container">
-            <a href="index.html" id="logo" title="Diana's jewelry">Diana's jewelry</a>
+            <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
                     <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
@@ -23,9 +67,7 @@
                 </ul>
             </div>
         </div>
-        <!-- / container -->
     </header>
-    <!-- / header -->
 
     <nav id="menu">
         <div class="container">
@@ -35,10 +77,10 @@
                 <li class="menu-item has-submenu">
                     <a href="products.html">Ürünlerimiz</a>
                     <ul class="submenu">
-                        <li><a href="products.html">Yeni Koleksiyon</a></li>
-                        <li><a href="products.html">Kolyeler</a></li>
-                        <li><a href="products.html">Küpeler</a></li>
-                        <li><a href="products.html">Yüzükler</a></li>
+                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
+                        <li><a href="necklaces.html">Kolyeler</a></li>
+                        <li><a href="earrings.html">Küpeler</a></li>
+                        <li><a href="rings.html">Yüzükler</a></li>
                     </ul>
                 </li>
                 <li class="menu-item has-submenu">
@@ -51,14 +93,12 @@
                 </li>
                 <li><a href="about.html">Hakkımızda</a></li>
                 <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
+                <li><a href="announcements.html" class="active">Duyurular</a></li>
                 <li><a href="contact.html">İletişim</a></li>
                 <li><a href="cart.html">Sepet</a></li>
             </ul>
         </div>
-        <!-- / container -->
     </nav>
-    <!-- / navigation -->
 
     <div id="breadcrumbs">
         <div class="container">
@@ -67,144 +107,18 @@
                 <li>Duyurular</li>
             </ul>
         </div>
-        <!-- / container -->
     </div>
-    <!-- / breadcrumbs -->
 
     <div id="body">
         <div class="container">
-            <div id="content" class="full">
-                <h1>Tüm Duyurular ve Fırsatlar</h1>
-                
-                <div class="announcements-list">
-                    <article class="announcement-full" data-content="<p>Yaz koleksiyonumuzda %30'a varan indirimler! Sınırlı süre için geçerli. Tüm mücevher kategorilerinde geçerli bu fırsat kaçmaz!</p><p>Kampanya tarihi: 15 Haziran - 30 Temmuz</p><p>Kampanyaya dahil ürünler:</p><ul><li>Altın kolyeler ve setler</li><li>Gümüş küpeler</li><li>Yüzük koleksiyonları</li><li>Bilezik modelleri</li></ul><p>Mağazalarımızı ziyaret ederek bu eşsiz fırsattan yararlanabilirsiniz.</p>">
-                        <div class="announcement-header">
-                            <h2>Yaz İndirimi Başladı!</h2>
-                            <span class="date">15 Haziran 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Yaz sezonuna özel tüm ürünlerde %30'a varan indirimler başladı! Bu fırsat kaçmaz.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Kampanya</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Yeni koleksiyonumuz 'Eternal Elegance' mağazalarımızda! Premium tasarımlar ve özel işçiliğin buluştuğu bu koleksiyonda benzersiz parçalar sizi bekliyor.</p><p>Koleksiyonun özellikleri:</p><ul><li>18 ayar altın kullanımı</li><li>Swarovski kristal detaylar</li><li>El işçiliği ile özel tasarım</li><li>Sınırlı sayıda üretim</li></ul><p>Koleksiyonu görmek için mağazalarımızı ziyaret edin veya online kataloğumuzu inceleyin.</p>">
-                        <div class="announcement-header">
-                            <h2>Yeni Koleksiyon: Eternal Elegance</h2>
-                            <span class="date">10 Haziran 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Premium tasarımlarla dolu yeni koleksiyonumuz mağazalarımızda yerini aldı.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Ürün</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Evlilik teklifinde bulunacaklar için özel danışmanlık hizmeti! Uzman ekibimiz size en uygun yüzük seçiminde yardımcı olacak.</p><p>Hizmet kapsamı:</p><ul><li>Kişiye özel tasarım danışmanlığı</li><li>Bütçeye uygun seçenekler</li><li>Tektaş, çiçek modeli, vintage tasarımlar</li><li>Özel gravür hizmetleri</li></ul><p>Randevu için: 0262 123 45 67</p><p>Hafta içi 09:00-18:00 arası arayabilirsiniz.</p>">
-                        <div class="announcement-header">
-                            <h2>Evlilik Teklifi Danışmanlığı</h2>
-                            <span class="date">5 Haziran 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Özel anınız için uzman ekibimizden profesyonel danışmanlık alın.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Hizmet</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Anneler Günü'ne özel hediye paketleri hazırladık! Sevdiklerinize özel tasarım kutular içinde sunulan mücevherlerimiz.</p><p>Hediye paketi içeriği:</p><ul><li>Özel tasarım hediye kutusu</li><li>Hediye kartı</li><li>Ürün sertifikası</li><li>Bakım talimatları</li></ul><p>Ücretsiz hediye paketi için son gün: 12 Mayıs</p><p>Online alışverişlerde otomatik hediye paketi seçeneği mevcuttur.</p>">
-                        <div class="announcement-header">
-                            <h2>Anneler Günü Hediye Paketleri</h2>
-                            <span class="date">1 Mayıs 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Sevdikleriniz için özel hediye paketleri ve sunumlar hazırladık.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Hediye</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Altın fiyatlarındaki değişiklikler hakkında müşterilerimizi bilgilendiriyoruz. Güncel fiyatlar için mağazalarımızı arayabilirsiniz.</p><p>Fiyat güncelleme politikamız:</p><ul><li>Günlük piyasa takibi</li><li>Şeffaf fiyatlandırma</li><li>Satış anındaki fiyat garantisi</li><li>Peşin ödeme avantajları</li></ul><p>Fiyat garantili alışveriş için özel koşullarımız mevcuttur.</p><p>Detaylı bilgi için mağazalarımızı arayınız.</p>">
-                        <div class="announcement-header">
-                            <h2>Altın Fiyatları Güncellendi</h2>
-                            <span class="date">25 Nisan 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Güncel altın fiyatları ve özel koşullarımız hakkında bilgilendirme.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Bilgi</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Bahar koleksiyonumuzda doğa temalı özel tasarımlar! Çiçek motifleri ve pastel renklerle hazırlanan bu koleksiyon baharın enerjisini yansıtıyor.</p><p>Koleksiyon özellikleri:</p><ul><li>Doğa temalı motifler</li><li>Pastel renk seçenekleri</li><li>Rose gold ve beyaz altın alternatifleri</li><li>Minimal ve şık tasarımlar</li></ul><p>Koleksiyonu keşfetmek için mağazalarımızı ziyaret edin.</p>">
-                        <div class="announcement-header">
-                            <h2>Bahar Koleksiyonu Lansmanı</h2>
-                            <span class="date">20 Nisan 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Doğa temalı yeni bahar koleksiyonumuz mağazalarımızda yerini aldı.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Ürün</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
-
-                    <article class="announcement-full" data-content="<p>Değerli müşterilerimize özel VIP üyelik programımız başlıyor! Ücretsiz üyelik ile birçok ayrıcalığa sahip olun.</p><p>VIP üyelik avantajları:</p><ul><li>Tüm ürünlerde %10 indirim</li><li>Ücretsiz temizlik ve bakım</li><li>Özel etkinlik davetiyeleri</li><li>Doğum günü sürprizleri</li><li>Öncelikli danışmanlık hizmeti</li></ul><p>Üyelik için mağazalarımızı ziyaret edin veya online başvuru yapın.</p>">
-                        <div class="announcement-header">
-                            <h2>VIP Üyelik Programı</h2>
-                            <span class="date">15 Nisan 2025</span>
-                        </div>
-                        <div class="announcement-excerpt">
-                            <p>Değerli müşterilerimiz için özel ayrıcalıklar sunan üyelik programımız.</p>
-                        </div>
-                        <div class="announcement-meta">
-                            <span class="category">Program</span>
-                            <span class="read-more">Detayları Oku</span>
-                        </div>
-                    </article>
+            <div class="announcements-page">
+                <h1>Duyurular ve Haberler</h1>
+                <div id="announcements-list">
+                    <!-- Duyurular buraya yüklenecek -->
                 </div>
-
-                <div class="pagination">
-                    <ul>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><span class="ico-next"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- / content -->
-        </div>
-        <!-- / container -->
-    </div>
-    <!-- / body -->
-
-    <!-- Modal for announcements -->
-    <div id="announcement-modal" class="modal" style="display: none;">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title"></h3>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div id="modal-content"></div>
             </div>
         </div>
     </div>
-    <!-- / modal -->
 
     <footer id="footer">
         <div class="container">
@@ -230,8 +144,8 @@
                 </div>
                 <div class="col contact">
                     <h3>İletişim Bilgileri</h3>
-                    <p>Diana's Jewelry Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
-                    <p><span class="ico ico-em"></span><a href="mailto:info@dianasjewelry.com">info@dianasjewelry.com</a></p>
+                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
                     <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
                 </div>
                 <div class="col newsletter">
@@ -239,16 +153,125 @@
                     <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
             </div>
-            <p class="copy">Copyright 2025 Diana's Jewelry. All rights reserved.</p>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
-        <!-- / container -->
     </footer>
-    <!-- / footer -->
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadAllAnnouncements();
+    });
+
+    function loadAllAnnouncements() {
+        const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+        const activeAnnouncements = announcements
+            .filter(a => a.active)
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const container = document.getElementById('announcements-list');
+
+        if (activeAnnouncements.length === 0) {
+            container.innerHTML = '<div class="no-announcements"><h3>Henüz duyuru bulunmamaktadır.</h3></div>';
+            return;
+        }
+
+        const categoryNames = {
+            'campaign': '🎁 Kampanya',
+            'news': '📰 Haber',
+            'announcement': '📢 Duyuru',
+            'event': '🎉 Etkinlik'
+        };
+
+        container.innerHTML = activeAnnouncements.map(announcement => {
+            const plainSnippet = announcement.content.replace(/<[^>]*>/g, '').substring(0, 160);
+            const hasAttachment = announcement.file ? '<span style="margin-left:10px; font-size:12px; color:#555">📎 Ek</span>' : '';
+            return `
+                <div class="announcement-full" onclick="openAnnouncementModal(${announcement.id})" style="cursor:pointer">
+                    <h2>${announcement.title}</h2>
+                    <div class="announcement-meta">
+                        <span class="announcement-category">${categoryNames[announcement.category] || announcement.category}</span>
+                        <span>${new Date(announcement.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                        ${hasAttachment}
+                    </div>
+                    <div class="content">
+                        ${plainSnippet}... <em style="color:#007bff; font-size:12px">(Devamı için tıklayın)</em>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        if (activeAnnouncements.length < 5) {
+            const info = document.createElement('div');
+            info.style.margin = '20px 0';
+            info.style.padding = '15px';
+            info.style.background = '#fff3cd';
+            info.style.border = '1px solid #ffeeba';
+            info.style.borderRadius = '6px';
+            info.style.color = '#856404';
+            info.innerHTML = `<strong>Bilgi:</strong> Şu anda ${activeAnnouncements.length} aktif duyuru var. Minimum gereksinim: 5.`;
+            container.prepend(info);
+        }
+    }
+
+    // Modal HTML ekle
+    const modalHtml = `
+    <div id="announcement-modal" class="modal" style="display:none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content" style="max-width:760px;">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <span class="modal-close" style="cursor:pointer;">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body" style="padding:25px; line-height:1.6;"></div>
+        </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    function openAnnouncementModal(id){
+        const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+        const announcement = announcements.find(a => a.id === id);
+        if(!announcement) return;
+        document.getElementById('modal-title').textContent = announcement.title;
+        let bodyHtml = '';
+        if(announcement.image){
+            bodyHtml += `<img src="${announcement.image}" alt="${announcement.title}" style="max-width:100%; border-radius:8px; margin-bottom:20px;">`;
+        }
+        bodyHtml += `<div style="margin-bottom:20px;">${announcement.content}</div>`;
+        bodyHtml += `<p><strong>Tarih:</strong> ${new Date(announcement.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</p>`;
+        if(announcement.file){
+            // Data URL veya harici link olabilir
+            const isData = announcement.file.startsWith('data:');
+            const downloadName = `${announcement.title.replace(/[^a-z0-9ğüşöçıİĞÜŞÖÇ\s]/gi,'_')}`;
+            if(isData){
+                bodyHtml += `<p><strong>Ek Dosya:</strong> <a href="${announcement.file}" download="${downloadName}" target="_blank">İndir</a></p>`;
+            } else {
+                bodyHtml += `<p><strong>Ek Dosya:</strong> <a href="${announcement.file}" target="_blank">Aç / İndir</a></p>`;
+            }
+        }
+        document.getElementById('modal-body').innerHTML = bodyHtml;
+        document.getElementById('announcement-modal').style.display = 'flex';
+    }
+
+    function closeAnnouncementModal(){
+        document.getElementById('announcement-modal').style.display = 'none';
+    }
+
+    document.addEventListener('click', function(e){
+        if(e.target.classList.contains('modal-close') || e.target.classList.contains('modal-overlay')){
+            closeAnnouncementModal();
+        }
+    });
+    </script>
 </body>
 </html>

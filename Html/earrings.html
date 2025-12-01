@@ -3,7 +3,7 @@
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Küpeler - Diana's jewelry</title>
+    <title>Küpeler - Emre Mücevherat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" media="all" href="../css/style.css">
     <!--[if lt IE 9]>
@@ -14,7 +14,7 @@
 
     <header id="header">
         <div class="container">
-            <a href="index.html" id="logo" title="Diana's jewelry">Diana's jewelry</a>
+            <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
                     <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
@@ -160,8 +160,8 @@
                 </div>
                 <div class="col contact">
                     <h3>İletişim Bilgileri</h3>
-                    <p>Diana's Jewelry Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
-                    <p><span class="ico ico-em"></span><a href="mailto:info@dianasjewelry.com">info@dianasjewelry.com</a></p>
+                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
                     <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
                 </div>
                 <div class="col newsletter">
@@ -169,8 +169,14 @@
                     <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
             </div>
-            <p class="copy">Copyright 2025 Diana's Jewelry. All rights reserved.</p>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
     </footer>
 
@@ -178,5 +184,84 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+let currentPage = 1;
+const productsPerPage = 8;
+let allCategoryProducts = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadCategoryProducts('earrings');
+});
+
+function loadCategoryProducts(category) {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    allCategoryProducts = products.filter(p => p.category === category);
+    
+    if (allCategoryProducts.length > 0) {
+        displayPage(1);
+        createPagination();
+    } else {
+        document.getElementById('products-container').innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1/-1;">Bu kategoride henüz ürün bulunmamaktadır.</p>';
+    }
+}
+
+function displayPage(page) {
+    currentPage = page;
+    const startIndex = (page - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const pageProducts = allCategoryProducts.slice(startIndex, endIndex);
+    
+    const productsContainer = document.getElementById('products-container');
+    productsContainer.innerHTML = pageProducts.map(product => `
+        <article>
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <h4>₺${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h4>
+            <a href="product.html?id=${product.id}" class="btn-add">Detayları Gör</a>
+        </article>
+    `).join('');
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updatePagination();
+}
+
+function createPagination() {
+    const totalPages = Math.ceil(allCategoryProducts.length / productsPerPage);
+    if (totalPages <= 1) {
+        document.getElementById('pagination-container').style.display = 'none';
+        return;
+    }
+    document.getElementById('pagination-container').style.display = 'block';
+    updatePagination();
+}
+
+function updatePagination() {
+    const totalPages = Math.ceil(allCategoryProducts.length / productsPerPage);
+    const paginationContainer = document.getElementById('pagination-container');
+    let paginationHTML = '';
+    
+    if (currentPage > 1) {
+        paginationHTML += `<li><a href="#" onclick="changePage(${currentPage - 1}); return false;"><span class="ico-prev"></span></a></li>`;
+    }
+    
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+            paginationHTML += `<li class="active"><a href="#" onclick="return false;">${i}</a></li>`;
+        } else {
+            paginationHTML += `<li><a href="#" onclick="changePage(${i}); return false;">${i}</a></li>`;
+        }
+    }
+    
+    if (currentPage < totalPages) {
+        paginationHTML += `<li><a href="#" onclick="changePage(${currentPage + 1}); return false;"><span class="ico-next"></span></a></li>`;
+    }
+    
+    paginationContainer.innerHTML = paginationHTML;
+}
+
+function changePage(page) {
+    displayPage(page);
+}
+</script>
 </body>
 </html>

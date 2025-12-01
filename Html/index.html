@@ -3,18 +3,156 @@
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Diana’s jewelry</title>
+    <title>Emre Mücevherat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" media="all" href="../css/style.css">
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+/* Modal Stilleri */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    z-index: 10000;
+}
+
+.modal-header {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.modal-close {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #ccc;
+}
+
+.modal-body {
+    padding: 30px;
+    line-height: 1.6;
+}
+
+/* Duyuru Kartları */
+#announcements {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+#announcements h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.announcement-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.announcement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.announcement-item h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.announcement-item p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.announcement-item .date {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.announcements-more {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.announcements-more .btn-more {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.announcements-more .btn-more:hover {
+    background: #555;
+}
+</style>
 </head>
 <body>
 
     <header id="header">
         <div class="container">
-            <a href="index.html" id="logo" title="Diana’s jewelry">Diana’s jewelry</a>
+            <a href="index.html" id="logo" title="Emre jewelry">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
                     <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
@@ -41,6 +179,7 @@
                         <li><a href="rings.html">Yüzükler</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-item has-submenu">
                     <a href="#birimlerimiz">Birimlerimiz</a>
                     <ul class="submenu">
@@ -49,9 +188,11 @@
                         <li><a href="text-page.html">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
+
                 <li><a href="about.html">Hakkımızda</a></li>
                 <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
                 <li><a href="announcements.html">Duyurular</a></li>
+                <li><a href="statistics.html">İstatistikler</a></li>
                 <li><a href="contact.html">İletişim</a></li>
                 <li><a href="cart.html">Sepet</a></li>
             </ul>
@@ -61,25 +202,102 @@
     <!-- / navigation -->
 
     <div id="slider">
-        <ul>
+        <ul id="slider-list">
             <li style="background-image: url(../images/0.jpg)">
-                <h3>Make your life better</h3>
-                <h2>Genuine diamonds</h2>
-                <a href="#" class="btn-more">Read more</a>
+                <h3>Genuine diamonds</h3>
+                <h2>Make your life better</h2>
+                <a href="products.html" class="btn-more">Read more</a>
             </li>
-            <li class="purple" style="background-image: url(../images/01.jpg)">
-                <h3>She will say “yes”</h3>
-                <h2>engagement ring</h2>
-                <a href="#" class="btn-more">Read more</a>
+            <li style="background-image: url(../images/01.jpg)">
+                <h3>engagement ring</h3>
+                <h2>She will say yes</h2>
+                <a href="rings.html" class="btn-more">Read more</a>
             </li>
-            <li class="yellow" style="background-image: url(../images/02.jpg)">
-                <h3>You deserve to be beauty</h3>
-                <h2>golden bracelets</h2>
-                <a href="#" class="btn-more">Read more</a>
+            <li style="background-image: url(../images/02.jpg)">
+                <h3>golden bracelets</h3>
+                <h2>You deserve to be beauty</h2>
+                <a href="products.html" class="btn-more">Read more</a>
             </li>
         </ul>
     </div>
     <!-- / slider -->
+
+    <!-- Featured Categories Section -->
+    <div id="featured-categories" style="padding: 80px 0; background: #f9f9f9;">
+        <div class="container">
+            <h2 style="text-align: center; color: #333; font-size: 36px; margin-bottom: 20px; font-family: 'Novecentowide'; font-weight: 200; letter-spacing: 3px;">ÖNE ÇIKAN KOLEKSİYONLAR</h2>
+            <p style="text-align: center; color: #666; font-size: 16px; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">Her zevke uygun, özenle seçilmiş koleksiyonlarımızı keşfedin</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <!-- Yeni Koleksiyon -->
+                <a href="new-collection.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/0.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Yeni</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Premium Koleksiyon</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">En yeni ve özel tasarımlarımız</p>
+                    </div>
+                </a>
+
+                <!-- Kolyeler -->
+                <a href="necklaces.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/1.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Popüler</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Kolyeler</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">Zarafeti boyunuzda hissedin</p>
+                    </div>
+                </a>
+
+                <!-- Yüzükler -->
+                <a href="rings.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/14.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Özel</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Yüzükler</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">Özel anlar için mükemmel seçim</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- / featured categories -->
+
+    <!-- Statistics Section -->
+    <div id="statistics-section" style="padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <h2 style="text-align: center; color: #fff; font-size: 32px; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px;">Sayılarla Emre Mücevherat</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">👥</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #667eea; margin-bottom: 10px;">15,420</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Mutlu Müşteri</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">💍</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #764ba2; margin-bottom: 10px;">850+</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Benzersiz Tasarım</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">🏪</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #667eea; margin-bottom: 10px;">12</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Mağaza</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">🏆</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #764ba2; margin-bottom: 10px;">28</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Ulusal Ödül</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="statistics.html" style="display: inline-block; padding: 15px 40px; background: #fff; color: #667eea; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#fff'; this.style.transform='scale(1)'">Detaylı İstatistikleri Gör</a>
+            </div>
+        </div>
+    </div>
+    <!-- / statistics -->
 
     <!-- Announcements Section -->
     <div id="announcements">
@@ -122,38 +340,12 @@
     <div id="body">
         <div class="container">
             <div class="last-products">
-                <h2>Last added products</h2>
-                <section class="products">
-                    <article>
-                        <img src="../images/1.jpg" alt="">
-                        <h3>Excepteur sint occaecat</h3>
-                        <h4>$1 850.00</h4>
-                        <a href="cart.html" class="btn-add">Add to cart</a>
-                    </article>
-                    <article>
-                        <img src="../images/11.jpg" alt="">
-                        <h3>Lorem ipsum dolor</h3>
-                        <h4>$990.00</h4>
-                        <a href="cart.html" class="btn-add">Add to cart</a>
-                    </article>
-                    <article>
-                        <img src="../images/12.jpg" alt="">
-                        <h3>cupidatat non proident</h3>
-                        <h4>$1 200.00</h4>
-                        <a href="cart.html" class="btn-add">Add to cart</a>
-                    </article>
-                    <article>
-                        <img src="../images/13.jpg" alt="">
-                        <h3>Duis aute irure</h3>
-                        <h4>$2 650.00</h4>
-                        <a href="cart.html" class="btn-add">Add to cart</a>
-                    </article>
-                    <article>
-                        <img src="../images/14.jpg" alt="">
-                        <h3>magna aliqua</h3>
-                        <h4>$3 500.00</h4>
-                        <a href="cart.html" class="btn-add">Add to cart</a>
-                    </article>
+                <h2>Son Eklenen Ürünler</h2>
+                <section class="products" id="last-products-container">
+                    <!-- Ürünler yükleniyor... -->
+                    <div style="text-align: center; padding: 50px; width: 100%; color: #999;">
+                        <p>Ürünler yükleniyor...</p>
+                    </div>
                 </section>
             </div>
             <section class="quick-links">
@@ -237,8 +429,8 @@
                 </div>
                 <div class="col contact">
                     <h3>İletişim Bilgileri</h3>
-                    <p>Diana's Jewelry Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
-                    <p><span class="ico ico-em"></span><a href="mailto:info@dianasjewelry.com">info@dianasjewelry.com</a></p>
+                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
                     <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
                 </div>
                 <div class="col newsletter">
@@ -246,8 +438,14 @@
                     <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
             </div>
-            <p class="copy">Copyright 2025 Diana's Jewelry. All rights reserved.</p>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
         <!-- / container -->
     </footer>
@@ -258,5 +456,394 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+// ============================================
+// 1. TEST VERİLERİNİ YÜKLE (İLK ÇALIŞTIRMADA)
+// ============================================
+if (!localStorage.getItem('dataInitialized')) {
+    // Test Ürünleri
+    const testProducts = [
+        {
+            id: 1,
+            name: "Elmas Taşlı Altın Kolye",
+            category: "necklaces",
+            price: 3250,
+            image: "../images/1.jpg",
+            description: "Zarif ve şık altın kolye. 18 ayar altından üretilmiştir. Elmas ağırlığı: 0.25 karat",
+            features: ["18 ayar altın", "0.25 karat elmas", "Özel tasarım", "Garanti sertifikası"]
+        },
+        {
+            id: 2,
+            name: "İnci Detaylı Gümüş Kolye",
+            category: "necklaces",
+            price: 1450,
+            image: "../images/11.jpg",
+            description: "İnci detaylı şık gümüş kolye. Doğal inci kullanılmıştır.",
+            features: ["925 ayar gümüş", "Doğal inci", "Uzun ömürlü", "Su geçirmez"]
+        },
+        {
+            id: 3,
+            name: "Elmas Taşlı Sallantılı Küpe",
+            category: "earrings",
+            price: 2850,
+            image: "../images/3.jpg",
+            description: "Zarif sallantılı küpe modeli. Özel gün ve davetler için ideal.",
+            features: ["14 ayar altın", "Elmas detay", "Sallantılı tasarım", "Hafif ve rahat"]
+        },
+        {
+            id: 4,
+            name: "Doğal İnci Küpe",
+            category: "earrings",
+            price: 1250,
+            image: "../images/4.jpg",
+            description: "Doğal inciden oluşan küpe. Klasik ve zarif.",
+            features: ["Doğal inci", "Gümüş kaplama", "Günlük kullanım", "Alerjik tepki vermez"]
+        },
+        {
+            id: 5,
+            name: "Tek Taş Elmas Yüzük",
+            category: "rings",
+            price: 8500,
+            image: "../images/14.jpg",
+            description: "Nişan için ideal tek taş yüzük. GIA sertifikalı elmas.",
+            features: ["18 ayar beyaz altın", "GIA sertifikalı elmas", "1 karat", "Özel kutulu"]
+        },
+        {
+            id: 6,
+            name: "Klasik Altın Alyans",
+            category: "rings",
+            price: 2750,
+            image: "../images/2.jpg",
+            description: "14 ayar altın alyans. Evlilik için klasik tercih.",
+            features: ["14 ayar altın", "Mat ve parlak seçenekler", "Gravür hizmeti", "Ömür boyu garanti"]
+        }
+    ];
+    localStorage.setItem('products', JSON.stringify(testProducts));
+    
+    // Test Slider'ları
+    const testSliders = [
+        {
+            id: 1,
+            title: "Make your life better",
+            description: "Genuine diamonds",
+            image: "../images/0.jpg",
+            link: "product.html?id=1",
+            productId: 1,
+            order: 1,
+            active: true
+        },
+        
+        {
+            id: 2,
+            title: "She will say yes",
+            description: "engagement ring",
+            image: "../images/01.jpg",
+            link: "product.html?id=5",
+            productId: 5,
+            order: 2,
+            active: true
+        },
+        {
+            id: 3,
+            title: "You deserve to be beauty",
+            description: "golden bracelets",
+            image: "../images/02.jpg",
+            link: "product.html?id=3",
+            productId: 3,
+            order: 3,
+            active: true
+        }
+    ];
+    localStorage.setItem('sliders', JSON.stringify(testSliders));
+    
+    // Test Duyuruları
+    const testAnnouncements = [
+        {
+            id: 1,
+            title: "Yaz İndirimi Başladı!",
+            category: "campaign",
+            content: "<p>Yaz koleksiyonumuzda yüzde 30'a varan indirimler! Sınırlı süre için geçerli.</p><p>Kampanya tarihi: 15 Haziran - 30 Temmuz 2025</p>",
+            image: "../images/1.jpg",
+            file: "",
+            date: "2025-06-15",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 2,
+            title: "Yeni Koleksiyon: Eternal Elegance",
+            category: "news",
+            content: "<p>Yeni koleksiyonumuz mağazalarımızda! Premium tasarımlar sizi bekliyor.</p>",
+            image: "../images/11.jpg",
+            file: "",
+            date: "2025-06-10",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 3,
+            title: "Evlilik Teklifi Danışmanlığı",
+            category: "announcement",
+            content: "<p>Evlilik teklifinde bulunacaklar için özel danışmanlık hizmeti!</p><p>Randevu için: 0262 123 45 67</p>",
+            image: "",
+            file: "",
+            date: "2025-06-05",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 4,
+            title: "Ücretsiz Temizlik Hizmeti",
+            category: "announcement",
+            content: "<p>Tüm müşterilerimize ücretsiz mücevher temizliği sunuyoruz.</p>",
+            image: "",
+            file: "",
+            date: "2025-05-28",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 5,
+            title: "Pırlanta Kolye Çekilişi",
+            category: "event",
+            content: "<p>1000 TL üzeri alışverişte çekilişe katılın!</p><p>Çekiliş tarihi: 30 Ağustos 2025</p>",
+            image: "../images/14.jpg",
+            file: "",
+            date: "2025-05-20",
+            active: true,
+            createdAt: new Date().toISOString()
+        }
+    ];
+    localStorage.setItem('announcements', JSON.stringify(testAnnouncements));
+    
+    localStorage.setItem('dataInitialized', 'true');
+}
+
+// ============================================
+// 2. SLIDER'LARI YÜKLE VE OTOMATİK DEĞİŞTİR
+// ============================================
+function loadSliders() {
+    const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+    const activeSliders = sliders.filter(s => s.active).sort((a, b) => a.order - b.order);
+    
+    if (activeSliders.length > 0) {
+        const sliderContainer = document.getElementById('slider-list');
+        sliderContainer.innerHTML = activeSliders.map(slider => `
+            <li style="background-image: url(${slider.image})">
+                <h3>${slider.description}</h3>
+                <h2>${slider.title}</h2>
+                <a href="${slider.link}" class="btn-more">Read more</a>
+            </li>
+        `).join('');
+
+        // bxSlider yeniden başlat (jQuery ve plugin yüklüyse)
+        initDynamicBxSlider();
+    }
+}
+
+// ============================================
+// 3. SON EKLENENLERİ YÜKLE
+// ============================================
+function loadLastProducts() {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const lastProducts = products.slice(-5).reverse(); // Son 5 ürünü ters sırada (en yeni en başta)
+    
+    if (lastProducts.length > 0) {
+        const productsContainer = document.getElementById('last-products-container');
+        if (productsContainer) {
+            productsContainer.innerHTML = lastProducts.map(product => `
+                <article>
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <h4>₺${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h4>
+                    <a href="product.html?id=${product.id}" class="btn-add">Detayları Gör</a>
+                </article>
+            `).join('');
+            
+            // bxSlider için yeniden başlat
+            initLastProductsSlider();
+        }
+    }
+}
+
+// Son ürünler slider'ı
+let lastProductsSlider = null;
+function initLastProductsSlider() {
+    if (!window.jQuery || !jQuery.fn.bxSlider) {
+        console.warn('jQuery veya bxSlider yüklenmemiş');
+        return;
+    }
+    
+    // Küçük gecikme ile DOM'un hazır olmasını bekle
+    setTimeout(function() {
+        const $container = jQuery('#last-products-container');
+        
+        if ($container.length === 0) {
+            console.warn('last-products-container bulunamadı');
+            return;
+        }
+        
+        const articleCount = $container.children('article').length;
+        console.log('Yüklenecek ürün sayısı:', articleCount);
+        
+        if (articleCount > 0) {
+            // Eğer daha önce başlatılmışsa destroy et
+            if (lastProductsSlider) {
+                try {
+                    lastProductsSlider.destroySlider();
+                    lastProductsSlider = null;
+                } catch(e) {
+                    console.error('Slider destroy hatası:', e);
+                }
+            }
+            
+            // Yeni slider başlat
+            lastProductsSlider = $container.bxSlider({
+                slideWidth: 235,
+                minSlides: 1,
+                maxSlides: 5,
+                slideMargin: 0,
+                pager: false,
+                nextText: '',
+                prevText: '',
+                infiniteLoop: true,
+                hideControlOnEnd: false,
+                moveSlides: 1,
+                responsive: true
+            });
+            
+            console.log('Last products slider başlatıldı');
+        } else {
+            console.warn('Gösterilecek ürün yok');
+        }
+    }, 100);
+}
+
+// ============================================
+// 4. DUYURULARI YÜKLE
+// ============================================
+function loadAnnouncements() {
+    const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+    const activeAnnouncements = announcements
+        .filter(a => a.active)
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+    
+    if (activeAnnouncements.length > 0) {
+        const announcementsContainer = document.querySelector('.announcements-grid');
+        announcementsContainer.innerHTML = activeAnnouncements.map(announcement => `
+            <div class="announcement-item" onclick="showAnnouncementModal(${announcement.id})">
+                <h3>${announcement.title}</h3>
+                <p>${announcement.content.replace(/<[^>]*>/g, '').substring(0, 100)}...</p>
+                <span class="date">${new Date(announcement.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+        `).join('');
+    }
+}
+
+// ============================================
+// 5. DUYURU MODAL GÖSTER
+// ============================================
+function showAnnouncementModal(announcementId) {
+    const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+    const announcement = announcements.find(a => a.id === announcementId);
+    
+    if (announcement) {
+        document.getElementById('modal-title').textContent = announcement.title;
+        
+        let modalContent = announcement.content;
+        
+        if (announcement.image) {
+            modalContent = `<img src="${announcement.image}" alt="${announcement.title}" style="max-width: 100%; margin-bottom: 20px; border-radius: 8px;">` + modalContent;
+        }
+        
+        if (announcement.file) {
+            modalContent += `<p><strong>Ek Dosya:</strong> <a href="${announcement.file}" target="_blank">İndir</a></p>`;
+        }
+        
+        document.getElementById('modal-content').innerHTML = modalContent;
+        document.getElementById('announcement-modal').style.display = 'flex';
+    }
+}
+
+// ============================================
+// 6. MODAL KAPATMA
+// ============================================
+function closeModal() {
+    document.getElementById('announcement-modal').style.display = 'none';
+}
+
+// ============================================
+// 7. SAYFA YÜKLENDİĞİNDE ÇALIŞTIR
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sayfa yükleniyor...');
+    
+    // İlk önce veriyi yükle
+    loadSliders();
+    loadAnnouncements();
+    loadLastProducts();
+    
+    // Modal işlemleri
+    const modal = document.getElementById('announcement-modal');
+    const closeBtn = document.querySelector('.modal-close');
+    const overlay = document.querySelector('.modal-overlay');
+    
+    if (closeBtn) {
+        closeBtn.onclick = closeModal;
+    }
+    
+    if (overlay) {
+        overlay.onclick = closeModal;
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    
+    console.log('Tüm içerik yüklendi');
+});
+
+// =============================
+// DİNAMİK BXSLIDER YÖNETİMİ
+// =============================
+let sliderInstance = null;
+function initDynamicBxSlider(){
+    if(!window.jQuery || !jQuery.fn.bxSlider) return;
+    // Eski instance varsa temizle (bxSlider destroy için wrapper yapısını kaldırır)
+    if(sliderInstance){
+        try { sliderInstance.destroySlider(); } catch(e) {}
+        sliderInstance = null;
+    }
+    // Responsive yeniden başlangıç: yüksekliği kaybetmemesi için min-height ekle.
+    const $ul = jQuery('#slider ul');
+    if($ul.children('li').length === 0) return;
+    $ul.children('li').css({minHeight:'500px'}); // Görseller background olduğundan yüklenmeden önce siyah boşluk olmaması için.
+    sliderInstance = $ul.bxSlider({
+        controls: true,
+        auto: true,
+        mode: 'fade',
+        preventDefaultSwipeX: false,
+        pause: 5000,
+        speed: 800,
+        adaptiveHeight: true,
+        onSliderResize: function(){
+            // Yeniden boyutlanınca slaytların minHeight'ını koru.
+            $ul.children('li').css({minHeight:'500px'});
+        }
+    });
+}
+
+// Resize debounce: yeniden boyutlandırmada siyah ekranı önlemek için destroy + re-init
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        initDynamicBxSlider();
+    }, 250);
+});
+</script>
 </body>
 </html>

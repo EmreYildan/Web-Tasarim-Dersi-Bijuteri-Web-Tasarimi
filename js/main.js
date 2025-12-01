@@ -10,26 +10,16 @@ function mobileCheck(){
 $(document).ready(function() {
 	$("input[type=checkbox]").crfi();
 	$("select").crfs();
-	$("#slider ul").bxSlider({
-		controls: true,
-		auto: true,
-		mode: 'fade',
-		preventDefaultSwipeX: false,
-		pause: 5000,
-		speed: 800
-	});
+	// Slider başlangıcı artık dinamik veri yüklendikten sonra (loadSliders) yapılacak.
+	// Burada otomatik kurulum kaldırıldı; tekrar init inline script içerisinde çağrılır.
 	
 	// Add click functionality to slider items
-	$("#slider li").click(function() {
-		window.location.href = 'product.html';
+	// Slide click: inline script yeniden init ettiğinde li elementleri yenileniyor; delegation kullan.
+	$(document).on('click', '#slider li', function(){
+		var link = $(this).find('a.btn-more').attr('href');
+		window.location.href = link || 'product.html';
 	});
-	$(".last-products .products").bxSlider({
-		pager: false,
-		minSlides: 1,
-		maxSlides: 5,
-		slideWidth: 235,
-		slideMargin: 0
-	});
+	// Son eklenen ürünler slider'ı artık dinamik yükleme sonrası başlatılacak
 	$(".tabs .nav a").click(function() {
 		var container = $(this).parentsUntil(".tabs").parent();
 		if (!$(this).parent().hasClass("active")) {
