@@ -15,11 +15,11 @@ tiplerinin eklenebilmesi mantığına sahip olmalıdır (Bu, admin panelinde
 tasarlanacak bir yapı olarak düşünülmelidir).
     - “Daha Fazla” butonu ile tüm duyuruların listelendiği ayrı bir sayfaya erişim
 sağlanmalıdır. Bu sayfada duyurular en yeniden en eskiye doğru sıralanmalıdır.
-- [x]Menü Yapısı:
-- Ana sayfadaki menü, sitenin tüm sayfalarına erişim sağlamalıdır.
-- Alt Menüler: “Ürünlerimiz” ve “Birimlerimiz” gibi ana menü başlıkları altında en az 2-
+- [x] Menü Yapısı:
+    - Ana sayfadaki menü, sitenin tüm sayfalarına erişim sağlamalıdır.
+    - Alt Menüler: “Ürünlerimiz” ve “Birimlerimiz” gibi ana menü başlıkları altında en az 2-
 3 adet alt menü bulunmalıdır. Alt menülerden ilgili sayfalara tek tıklamayla ulaşılmalıdır.
-- Tek Tıklama Sayfaları: “Hakkımızda”, “Misyon-Vizyon” ve “İletişim” gibi sayfalar
+    - Tek Tıklama Sayfaları: “Hakkımızda”, “Misyon-Vizyon” ve “İletişim” gibi sayfalar
 doğrudan tek tıklamayla açılmalıdır.
 - [x] Sayfa İçerikleri:
     - Hakkımızda, Misyon-Vizyon, Ürünlerimiz, Birimlerimiz, İletişim: Bu sayfaların
