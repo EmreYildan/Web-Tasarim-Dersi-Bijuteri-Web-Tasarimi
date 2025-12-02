@@ -37,7 +37,7 @@ bulunmalıdır.
     - Footer: Firmanın açık adresi, telefon numarası, sosyal medya adresleri, web sitesi
 tasarımcısının bilgileri ve kısa bir tanıtım gibi temel bilgileri içermelidir. Footer, sitenin
 tüm sayfalarının en altında tutarlı bir şekilde yer almalıdır.
-- [x]Teknik ve Sunum Gereksinimleri:
+- [x] Teknik ve Sunum Gereksinimleri:
     - Canlı Sunum: Tasarladığınız web sitesi, bir web sunucusunda canlı olarak çalışır halde
 sunulmalıdır.
     - Proje Raporu: Projenizi anlatan detaylı bir Rapor hazırlanmalı ve projeyle birlikte
