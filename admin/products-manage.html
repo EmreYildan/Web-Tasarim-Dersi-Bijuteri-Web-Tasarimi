@@ -159,9 +159,9 @@
         <nav class="admin-sidebar">
             <ul>
                 <li><a href="dashboard.html">📊 Dashboard</a></li>
-                <li><a href="products.html" class="active">📦 Ürün Yönetimi</a></li>
-                <li><a href="announcements.html">📢 Duyuru Yönetimi</a></li>
-                <li><a href="slider.html">🎬 Slider Yönetimi</a></li>
+                <li><a href="products-manage.html" class="active">📦 Ürün Yönetimi</a></li>
+                <li><a href="announcements-manage.html">📢 Duyuru Yönetimi</a></li>
+                <li><a href="slider-manage.html">🎬 Slider Yönetimi</a></li>
                 <li><a href="../Html/index.html" target="_blank">🌐 Siteyi Görüntüle</a></li>
             </ul>
         </nav>
@@ -203,6 +203,12 @@
                         <label for="productImage">Resim URL *</label>
                         <input type="text" id="productImage" placeholder="../images/1.jpg" required>
                         <small>Örnek: ../images/1.jpg</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productFeatures">Özellikler (Features)</label>
+                        <textarea id="productFeatures" placeholder="Virgülle ayırarak özellik giriniz (örn: 18 ayar altın, 0.25 karat elmas, Özel tasarım)"></textarea>
+                        <small>Özellikleri virgül ile ayırarak giriniz</small>
                     </div>
                     
                     <button type="submit" class="btn btn-primary" id="submitBtn">Ürün Ekle</button>
@@ -275,12 +281,19 @@
         function saveProduct(event) {
             event.preventDefault();
             
+            // Features'ı array'e çevir
+            const featuresInput = document.getElementById('productFeatures').value;
+            const featuresArray = featuresInput 
+                ? featuresInput.split(',').map(f => f.trim()).filter(f => f !== '')
+                : [];
+            
             const product = {
                 id: editingProductId || Date.now(),
                 name: document.getElementById('productName').value,
                 category: document.getElementById('productCategory').value,
                 price: document.getElementById('productPrice').value,
                 description: document.getElementById('productDescription').value,
+                features: featuresArray,  // ✅ Features eklendi
                 image: document.getElementById('productImage').value,
                 createdAt: editingProductId ? undefined : new Date().toISOString()
             };
@@ -312,6 +325,13 @@
             document.getElementById('productCategory').value = product.category;
             document.getElementById('productPrice').value = product.price;
             document.getElementById('productDescription').value = product.description || '';
+            
+            // Features array'i virgülle ayrılmış string'e çevir
+            const featuresString = product.features && Array.isArray(product.features)
+                ? product.features.join(', ')
+                : '';
+            document.getElementById('productFeatures').value = featuresString;
+            
             document.getElementById('productImage').value = product.image;
             
             document.getElementById('submitBtn').textContent = 'Ürünü Güncelle';

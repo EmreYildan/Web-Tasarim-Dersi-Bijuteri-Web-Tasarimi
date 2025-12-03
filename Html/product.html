@@ -13,7 +13,7 @@
 <body>
 
     <header id="header">
-        <div class="container">
+        <footer id="footer" role="contentinfo">
             <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
@@ -27,33 +27,36 @@
     </header>
     <!-- / header -->
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="products.html">Yeni Koleksiyon</a></li>
-                        <li><a href="products.html">Kolyeler</a></li>
-                        <li><a href="products.html">Küpeler</a></li>
-                        <li><a href="products.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
         <!-- / container -->
@@ -82,7 +85,6 @@
                         <h1>Lorem ipsum dolor</h1>
                         <h4>$990.00</h4>
                         <div class="entry">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                             <div class="tabs">
                                 <div class="nav">
                                     <ul>
@@ -103,9 +105,15 @@
                             </div>
                         </div>
                         <div class="actions">
-                            <label>Quantity:</label>
-                            <select><option>1</option></select>
-                            <a href="#" class="btn-grey">Add to cart</a>
+                            <label>Adet:</label>
+                            <select id="product-quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <a href="#" class="btn-grey" id="add-to-cart-btn">Sepete Ekle</a>
                         </div>
                     </div>
                 </div>
@@ -187,9 +195,15 @@
             const params = new URLSearchParams(window.location.search);
             return params.get(name);
         }
-        const productId = parseInt(getParam('id'),10);
+        const productIdParam = getParam('id');
+        const productId = productIdParam ? parseInt(productIdParam,10) : null;
         const products = JSON.parse(localStorage.getItem('products')) || [];
-        const product = products.find(p => p.id === productId) || products[0];
+        const product = products.find(p => p.id === productId);
+
+        if(!product){
+            window.location.href = 'products.html';
+            return;
+        }
 
         if(product){
             // Ana container elemanları
@@ -216,16 +230,71 @@
                 tabsRet.innerHTML = '<p>14 gün içinde koşulsuz iade. Sertifika ve fatura ile birlikte gönderim yapılır.</p>';
             }
 
-            // Quantity - Add to cart buton davranışı (örnek)
-            const addBtn = document.querySelector('.actions .btn-grey');
+            // Sepete ekleme fonksiyonu
+            const addBtn = document.getElementById('add-to-cart-btn');
+            const quantitySelect = document.getElementById('product-quantity');
+            
             if(addBtn){
-                addBtn.textContent = 'Sepete Ekle';
                 addBtn.addEventListener('click', function(e){
                     e.preventDefault();
-                    alert(product.name + ' sepete eklendi. (Demo)');
+                    addToCart(product, parseInt(quantitySelect.value));
                 });
             }
         }
+
+        function addToCart(product, quantity) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Ürün zaten sepette mi kontrol et
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Görsel geri bildirim
+            const btn = document.getElementById('add-to-cart-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Eklendi!';
+            btn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = '';
+            }, 2000);
+            
+            // Header'ı güncelle
+            updateCartHeader();
+            
+            // Kullanıcıya bildirim
+            if (confirm(product.name + ' sepete eklendi! Sepete gitmek ister misiniz?')) {
+                window.location.href = 'cart.html';
+            }
+        }
+
+        function updateCartHeader() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            const cartLink = document.querySelector('.right-links a[href="cart.html"]');
+            if (cartLink) {
+                cartLink.innerHTML = `<span class="ico-products"></span>${totalItems} ürün, ₺${totalPrice.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+            }
+        }
+
+        // Sayfa yüklendiğinde header'ı güncelle
+        updateCartHeader();
     })();
     </script>
 </body>

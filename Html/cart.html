@@ -27,33 +27,36 @@
     </header>
     <!-- / header -->
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="products.html">Yeni Koleksiyon</a></li>
-                        <li><a href="products.html">Kolyeler</a></li>
-                        <li><a href="products.html">Küpeler</a></li>
-                        <li><a href="products.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem" aria-current="page">Sepet</a></li>
             </ul>
         </div>
         <!-- / container -->
@@ -74,62 +77,34 @@
     <div id="body">
         <div class="container">
             <div id="content" class="full">
-                <div class="cart-table">
-                    <table>
-                        <tr>
-                            <th class="items">Items</th>
-                            <th class="price">Price</th>
-                            <th class="qnt">Quantity</th>
-                            <th class="total">Total</th>
-                            <th class="delete"></th>
-                        </tr>
-                        <tr>
-                            <td class="items">
-                                <div class="image">
-                                    <img src="../images/6.jpg" alt="">
-                                </div>
-                                <h3><a href="#">Lorem ipsum dolor</a></h3>
-                                <p>Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
-                            </td>
-                            <td class="price">$1 350.00</td>
-                            <td class="qnt"><select><option>1</option><option>1</option></select></td>
-                            <td class="total">$1 350.00</td>
-                            <td class="delete"><a href="#" class="ico-del"></a></td>
-                        </tr>
-                        <tr>
-                            <td class="items">
-                                <div class="image">
-                                    <img src="../images/61.jpg" alt="">
-                                </div>
-                                <h3><a href="#">illum qui dolorem eum fugiat</a></h3>
-                                <p>Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum.</p>
-                            </td>
-                            <td class="price">$2 100.00</td>
-                            <td class="qnt"><select><option>1</option><option>1</option></select></td>
-                            <td class="total">$2 100.00</td>
-                            <td class="delete"><a href="#" class="ico-del"></a></td>
-                        </tr>
-                        <tr>
-                            <td class="items">
-                                <div class="image">
-                                    <img src="../images/62.jpg" alt="">
-                                </div>
-                                <h3><a href="#">accusantium doloremque laudantium</a></h3>
-                                <p>Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum.</p>
-                            </td>
-                            <td class="price">$1 050.00</td>
-                            <td class="qnt"><select><option>1</option><option>1</option></select></td>
-                            <td class="total">$1 050.00</td>
-                            <td class="delete"><a href="#" class="ico-del"></a></td>
-                        </tr>
-                    </table>
+                <div id="empty-cart" style="display: none; text-align: center; padding: 60px 0;">
+                    <h2>Sepetiniz Boş</h2>
+                    <p style="margin: 20px 0; color: #666;">Henüz sepetinize ürün eklemediniz.</p>
+                    <a href="products.html" class="btn-grey">Alışverişe Başla</a>
                 </div>
 
-                <div class="total-count">
-                    <h4>Subtotal: $4 500.00</h4>
-                    <p>+shippment: $30.00</p>
-                    <h3>Total to pay: <strong>$4 530.00</strong></h3>
-                    <a href="#" class="btn-grey">Finalize and pay</a>
+                <div id="cart-content" style="display: none;">
+                    <div class="cart-table">
+                        <table>
+                            <tr>
+                                <th class="items">Ürünler</th>
+                                <th class="price">Fiyat</th>
+                                <th class="qnt">Adet</th>
+                                <th class="total">Toplam</th>
+                                <th class="delete"></th>
+                            </tr>
+                            <tbody id="cart-items">
+                                <!-- Sepet ürünleri JavaScript ile yüklenecek -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="total-count">
+                        <h4>Ara Toplam: <span id="subtotal">₺0.00</span></h4>
+                        <p>+Kargo: <span id="shipping">₺50.00</span></p>
+                        <h3>Ödenecek Tutar: <strong id="final-total">₺50.00</strong></h3>
+                        <a href="#" class="btn-grey" onclick="finalizeOrder(); return false;">Siparişi Tamamla</a>
+                    </div>
                 </div>
         
             </div>
@@ -169,7 +144,7 @@
                 </div>
                 <div class="col newsletter">
                     <h3>Web Tasarım</h3>
-                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
                 <div class="col">
@@ -190,5 +165,124 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // Sepet Yönetimi
+    let cart = [];
+    const SHIPPING_COST = 50;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadCart();
+        displayCart();
+    });
+
+    function loadCart() {
+        const savedCart = localStorage.getItem('cart');
+        cart = savedCart ? JSON.parse(savedCart) : [];
+    }
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartHeader();
+    }
+
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCart = document.getElementById('empty-cart');
+        const cartContent = document.getElementById('cart-content');
+
+        if (cart.length === 0) {
+            emptyCart.style.display = 'block';
+            cartContent.style.display = 'none';
+            return;
+        }
+
+        emptyCart.style.display = 'none';
+        cartContent.style.display = 'block';
+
+        // Ürün listesini oluştur
+        cartItemsContainer.innerHTML = cart.map(item => {
+            const itemTotal = item.price * item.quantity;
+            return `
+                <tr data-id="${item.id}">
+                    <td class="items">
+                        <div class="image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <h3><a href="product.html?id=${item.id}">${item.name}</a></h3>
+                    </td>
+                    <td class="price">₺${parseFloat(item.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</td>
+                    <td class="qnt">
+                        <select onchange="updateQuantity(${item.id}, this.value)">
+                            ${[1,2,3,4,5,6,7,8,9,10].map(n => 
+                                `<option value="${n}" ${n === item.quantity ? 'selected' : ''}>${n}</option>`
+                            ).join('')}
+                        </select>
+                    </td>
+                    <td class="total">₺${itemTotal.toLocaleString('tr-TR', {minimumFractionDigits: 2})}</td>
+                    <td class="delete">
+                        <a href="#" class="ico-del" onclick="removeFromCart(${item.id}); return false;"></a>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        updateTotals();
+    }
+
+    function updateTotals() {
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = cart.length > 0 ? SHIPPING_COST : 0;
+        const finalTotal = subtotal + shipping;
+
+        document.getElementById('subtotal').textContent = '₺' + subtotal.toLocaleString('tr-TR', {minimumFractionDigits: 2});
+        document.getElementById('shipping').textContent = '₺' + shipping.toLocaleString('tr-TR', {minimumFractionDigits: 2});
+        document.getElementById('final-total').textContent = '₺' + finalTotal.toLocaleString('tr-TR', {minimumFractionDigits: 2});
+    }
+
+    function updateQuantity(productId, newQuantity) {
+        const item = cart.find(item => item.id === productId);
+        if (item) {
+            item.quantity = parseInt(newQuantity);
+            saveCart();
+            displayCart();
+        }
+    }
+
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        saveCart();
+        displayCart();
+    }
+
+    function updateCartHeader() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        const cartLink = document.querySelector('.right-links a[href="cart.html"]');
+        if (cartLink) {
+            cartLink.innerHTML = `<span class="ico-products"></span>${totalItems} ürün, ₺${totalPrice.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+        }
+    }
+
+    function finalizeOrder() {
+        if (cart.length === 0) {
+            alert('Sepetiniz boş!');
+            return;
+        }
+
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const finalTotal = subtotal + SHIPPING_COST;
+
+        if (confirm(`Toplam ₺${finalTotal.toLocaleString('tr-TR', {minimumFractionDigits: 2})} tutarındaki siparişinizi onaylıyor musunuz?`)) {
+            alert('Siparişiniz başarıyla alındı! Teşekkür ederiz.');
+            cart = [];
+            saveCart();
+            displayCart();
+        }
+    }
+
+    // Sayfa yüklendiğinde header'ı güncelle
+    updateCartHeader();
+    </script>
 </body>
 </html>

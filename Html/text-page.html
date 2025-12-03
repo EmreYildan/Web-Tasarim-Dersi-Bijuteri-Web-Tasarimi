@@ -27,33 +27,36 @@
     </header>
     <!-- / header -->
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="products.html">Yeni Koleksiyon</a></li>
-                        <li><a href="products.html">Kolyeler</a></li>
-                        <li><a href="products.html">Küpeler</a></li>
-                        <li><a href="products.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-current="page">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
         <!-- / container -->
@@ -74,21 +77,33 @@
     <div id="body">
         <div class="container">
             <div id="content" class="full">
-                <h1>sed do eiusmod tempor incididunt</h1>
+                <h1>Kurumsal Bilgi Sayfası</h1>
                 <div class="entry">
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-                    <h2>Duis aute irure dolor in reprehenderit </h2>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur:</p>
-                    <ol>
-                        <li>Phasellus vitae enim non quam adipiscing suscipit nec quis mauris.</li>
-                        <li>Vivamus feugiat erat vel pellentesque luctus.</li>
-                        <li>Nullam ac urna facilisis, fringilla arcu in, sodales velit.</li>
-                        <li>Nam tempus nisi ornare urna mollis cursus.</li>
-                    </ol>
-                    <h2>dignissimos ducimus blanditiis praesentium</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio <a href="#"><strong>nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit</strong></a> quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                    <section id="satis" aria-labelledby="satis-title">
+                        <h2 id="satis-title">Satış Birimi</h2>
+                        <p>Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi <strong>Emre Yasin Yıldan</strong> liderliğinde, <strong>Emre Mücevherat</strong> bünyesinde <strong>15 senedir</strong> kesintisiz satış faaliyetleri yürütmekteyiz. Satış birimimiz; mağaza içi deneyim ile çevrim içi alışverişi birleştirerek müşterilere her temas noktasında tutarlı ve güvenilir bir hizmet sunar. Ürünlerin doğru tanıtımı, ihtiyaçların doğru anlaşılması ve uygun tekliflerin oluşturulması için veri odaklı yaklaşım kullanırız.</p>
+                        <p>Stok yönetimi ve kampanya planlaması, sezonluk trendler ve müşteri geri bildirimleri dikkate alınarak gerçekleştirilir. Her yeni koleksiyon öncesinde pazar analizi yapılır, en çok talep gören materyal ve tasarım çizgileri belirlenir. Müşterilerimize sunduğumuz kişiselleştirilmiş öneriler; bütçe aralığı, kullanım amacı ve tarz tercihlerine göre şekillendirilir. Satış sonrası memnuniyet düzeyleri düzenli ölçülerek süreçler iyileştirilir.</p>
+                        <p>Satış temsilcilerimiz, doğru bilgiyi şeffaf biçimde aktarmayı ve müşterilerle uzun vadeli güven ilişkisi kurmayı hedefler. Ürün karşılaştırmaları, ölçülendirme desteği, uygun taş ve maden seçimi gibi konularda rehberlik sağlanır. Uzun yıllara dayanan tecrübemiz sayesinde, özel günler için doğru hediye seçimi ve yüzük ölçüsü uyumu gibi kritik detaylarda hatasız yönlendirme yaparız.</p>
+                    </section>
+
+                    <div style="height:60px"></div>
+
+                    <section id="musteri" aria-labelledby="musteri-title">
+                        <h2 id="musteri-title">Müşteri Hizmetleri</h2>
+                        <p><strong>Emre Mücevherat</strong>’ta müşteri memnuniyeti her şeyden önce gelir. Emre Yasin Yıldan’ın yönlendirmeleriyle şekillenen süreçlerimiz; iade-değişim, garanti, bakım ve satış sonrası destek adımlarını eksiksiz kapsar. Hedefimiz, müşterilerimizin satın alma öncesi ve sonrası tüm aşamalarda kendilerini güvende ve iyi desteklenmiş hissetmelerini sağlamaktır.</p>
+                        <p>İade ve değişim süreçlerinde hızlı değerlendirme ve açık iletişim esastır. Ürün bakım hizmetlerimiz; parlatma, ayar düzeltme, taş sağlamlaştırma ve boyut ayarlama gibi profesyonel uygulamaları içerir. Garanti kapsamımız üretim kaynaklı kusurları güvence altına alırken, kullanım kaynaklı ihtiyaçlar için de uygun çözümler sunarız. Her talep kayıt altına alınır ve kalite ekibi tarafından periyodik olarak analiz edilerek hizmet standardı iyileştirilir.</p>
+                        <p>Destek kanallarımız e-posta, telefon ve mağaza içi danışma noktaları üzerinden 7/24 erişilebilirlik yaklaşımına göre planlanır. Sık sorulan sorular ve yönlendirme içerikleri düzenli güncellenir; ürün seçimi, ölçü belirleme ve teslimat takibi gibi konularda net ve yol gösterici bilgilendirme yapılır. Hızlı yanıt, şeffaf bilgilendirme ve çözüm odaklı yaklaşım, müşteri hizmetleri ekibimizin vazgeçilmez prensipleridir.</p>
+                    </section>
+
+                    <div style="height:60px"></div>
+
+                    <section id="tasarim" aria-labelledby="tasarim-title">
+                        <h2 id="tasarim-title">Tasarım Ekibi</h2>
+                        <p>Tasarım ekibimiz, geleneksel zanaatkârlığı modern çizgilerle buluşturan yeni koleksiyonlar üretir. Kişiye özel yüzük, kolye ve küpe tasarımlarında fikirden teslimata kadar tüm aşamalar şeffaf biçimde yönetilir. Malzeme seçimi (altın, gümüş, platin), taş tercihleri (pırlanta, zümrüt, safir vb.) ve işçilik teknikleri müşterinin kullanım senaryosu ve estetik tercihleri doğrultusunda belirlenir.</p>
+                        <p>Tasarım sürecinde, eskiz onayı ve 3D model ön izleme adımlarıyla müşterinin hayal ettiği form netleştirilir. Üretim aşamasında kalite kontrol kriterleri; taş yuvası güvenliği, yüzey bitişi ve ölçü tutarlılığı gibi detayları kapsar. 15 yıllık satış tecrübemizin sağladığı içgörü sayesinde, trend analizi ve fonksiyonellik dengesi kurularak dayanıklı, zarif ve zamansız parçalar ortaya çıkarılır.</p>
+                        <p>Teslim sonrası bakım ve uyarlama hizmetleri tasarım sürecinin doğal devamı olarak sunulur. Ölçü değişikliği, parlatma ve küçük onarımlar için süratli çözümler sağlanır. Müşteri geri bildirimleri düzenli olarak değerlendirilir; her yeni koleksiyon iteratif olarak iyileştirilir ve marka çizgisi korunurken yenilikçi dokunuşlar eklenir.</p>
+                    </section>
                 </div>
-        
             </div>
             <!-- / content -->
         </div>
@@ -96,7 +111,7 @@
     </div>
     <!-- / body -->
 
-    <footer id="footer">
+    <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="cols">
                 <div class="col">
@@ -136,7 +151,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="copy">Copyright 2025 Emre's Jewelry. All rights reserved.</p>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
         <!-- / container -->
     </footer>
@@ -147,5 +162,35 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        function scrollToSectionFromHash() {
+            var hash = window.location.hash || '#satis';
+            var target = document.querySelector(hash);
+            if (!target) return;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - 20;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+
+        // Smooth scroll on load
+        document.addEventListener('DOMContentLoaded', scrollToSectionFromHash);
+
+        // Handle in-page clicks smoothly
+        document.querySelectorAll('a[href^="text-page.html#"], a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                var id = href.split('#')[1];
+                if (!id) return;
+                e.preventDefault();
+                history.replaceState(null, '', '#'+id);
+                var target = document.getElementById(id);
+                if (target) {
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - 20;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

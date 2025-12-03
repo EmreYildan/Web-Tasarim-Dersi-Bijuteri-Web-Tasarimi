@@ -27,33 +27,36 @@
     </header>
     <!-- / header -->
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
-                        <li><a href="necklaces.html">Kolyeler</a></li>
-                        <li><a href="earrings.html">Küpeler</a></li>
-                        <li><a href="rings.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem" aria-current="page">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
         <!-- / container -->
@@ -136,13 +139,13 @@
                 </div>
                 <div class="col contact">
                     <h3>İletişim Bilgileri</h3>
-                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
-                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
+                    <p>Diana's Jewelry Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@dianasjewelry.com">info@dianasjewelry.com</a></p>
                     <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
                 </div>
                 <div class="col newsletter">
                     <h3>Web Tasarım</h3>
-                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
                 <div class="col">
@@ -152,11 +155,9 @@
                     </ul>
                 </div>
             </div>
-            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
+            <p class="copy">Copyright 2025 Diana's Jewelry. All rights reserved.</p>
         </div>
-        <!-- / container -->
     </footer>
-    <!-- / footer -->
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>

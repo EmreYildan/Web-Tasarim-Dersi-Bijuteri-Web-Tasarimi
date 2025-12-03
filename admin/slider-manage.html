@@ -179,9 +179,8 @@
     <div class="admin-header">
         <h1>Emre Mücevherat - Slider Yönetimi</h1>
         <button class="logout-btn" onclick="logout()">Çıkış Yap</button>
-    </div>
-    
-    <div class="admin-layout">
+            </div>
+        <div class="admin-layout">
         <nav class="admin-sidebar">
             <ul>
                 <li><a href="dashboard.html">📊 Dashboard</a></li>
@@ -221,6 +220,13 @@
                         <input type="text" id="sliderLink" required placeholder="product.html">
                         <small>Slider'a tıklandığında gidilecek sayfa (ör: product.html, necklaces.html)</small>
                     </div>
+                    <div class="form-group">
+                        <label for="sliderProductId">Ürün Seç (opsiyonel)</label>
+                        <select id="sliderProductId">
+                            <option value="">— Seçili değil —</option>
+                        </select>
+                        <small>Belirli bir ürüne yönlendirmek için seçin. Seçince bağlantı otomatik doldurulur.</small>
+                    </div>
                     
                     <div class="form-group">
                         <label for="sliderOrder">Sıra Numarası *</label>
@@ -259,6 +265,17 @@
         function loadSliders() {
             const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
             const grid = document.getElementById('slidersGrid');
+            // Ürün seçim listesini doldur
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const productSelect = document.getElementById('sliderProductId');
+            if (productSelect && productSelect.options.length <= 1) {
+                products.forEach(p => {
+                    const opt = document.createElement('option');
+                    opt.value = p.id;
+                    opt.textContent = `${p.name} (#${p.id})`;
+                    productSelect.appendChild(opt);
+                });
+            }
             
             if (sliders.length === 0) {
                 grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">Henüz slider eklenmemiş. En az 3 slider eklemeniz önerilir.</p>';
@@ -297,6 +314,10 @@
                 description: document.getElementById('sliderDescription').value,
                 image: document.getElementById('sliderImage').value,
                 link: document.getElementById('sliderLink').value,
+                productId: (function(){
+                    var v = document.getElementById('sliderProductId').value;
+                    return v ? parseInt(v) : undefined;
+                })(),
                 order: parseInt(document.getElementById('sliderOrder').value),
                 active: document.getElementById('sliderActive').checked,
                 createdAt: editingSliderId ? undefined : new Date().toISOString()
@@ -330,6 +351,9 @@
             document.getElementById('sliderDescription').value = slider.description || '';
             document.getElementById('sliderImage').value = slider.image;
             document.getElementById('sliderLink').value = slider.link;
+            if (document.getElementById('sliderProductId')) {
+                document.getElementById('sliderProductId').value = slider.productId || '';
+            }
             document.getElementById('sliderOrder').value = slider.order;
             document.getElementById('sliderActive').checked = slider.active;
             
@@ -354,6 +378,9 @@
         function resetForm() {
             document.getElementById('sliderForm').reset();
             document.getElementById('sliderActive').checked = true;
+            if (document.getElementById('sliderProductId')) {
+                document.getElementById('sliderProductId').value = '';
+            }
             editingSliderId = null;
             document.getElementById('submitBtn').textContent = 'Slider Ekle';
         }
@@ -367,6 +394,17 @@
 
         // Sayfa yüklendiğinde slider'ları göster
         loadSliders();
+
+        // Ürün seçimi değiştiğinde linki otomatik ayarla
+        const productSelectEl = document.getElementById('sliderProductId');
+        if (productSelectEl) {
+            productSelectEl.addEventListener('change', function(){
+                var v = this.value;
+                if (v) {
+                    document.getElementById('sliderLink').value = `product.html?id=${encodeURIComponent(v)}`;
+                }
+            });
+        }
     </script>
 </body>
 </html>

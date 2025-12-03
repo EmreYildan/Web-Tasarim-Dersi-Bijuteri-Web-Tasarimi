@@ -9,6 +9,58 @@
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    /* Ürün kartı aksiyonları: kompakt altalta butonlar */
+    .product-actions{ 
+        display:flex; 
+        flex-direction:column;
+        gap:8px; 
+        margin-top:10px; 
+    }
+    .product-actions .btn-add,
+    .product-actions button{
+        padding: 10px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.2;
+        border-radius: 3px;
+        border: 2px solid transparent;
+        background: #222;
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        width: 100%;
+        min-height: 38px;
+        letter-spacing: .2px;
+        transition: all .2s ease;
+    }
+    /* Birincil: Sepete Ekle */
+    .product-actions button{ 
+        background:#1f2937; 
+        border-color:#1f2937; 
+    }
+    .product-actions button:hover{ 
+        background:#374151; 
+        border-color:#374151; 
+        transform: translateY(-2px); 
+        box-shadow: 0 6px 12px rgba(0,0,0,.2); 
+    }
+
+    /* İkincil: Detayları Gör (outline) */
+    .product-actions a.btn-add{ 
+        background:#ffffff; 
+        color:#111; 
+        border-color:#d1d5db; 
+    }
+    .product-actions a.btn-add:hover{ 
+        background:#f9fafb; 
+        color:#000; 
+        border-color:#9ca3af; 
+        transform: translateY(-2px); 
+        box-shadow: 0 4px 10px rgba(0,0,0,.12); 
+    }
+    </style>
 </head>
 <body>
 
@@ -27,33 +79,36 @@
     </header>
     <!-- / header -->
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
-                        <li><a href="necklaces.html">Kolyeler</a></li>
-                        <li><a href="earrings.html">Küpeler</a></li>
-                        <li><a href="rings.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-current="page">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
         <!-- / container -->
@@ -73,17 +128,7 @@
 
     <div id="body">
         <div class="container">
-            <div class="pagination">
-                <ul>
-                    <li><a href="#"><span class="ico-prev"></span></a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><span class="ico-next"></span></a></li>
-                </ul>
-            </div>
+            <div class="pagination" style="display: none;" id="top-pagination"></div>
             <div class="products-wrap">
                 <aside id="sidebar">
                     <div class="widget">
@@ -125,64 +170,13 @@
                     </div>
                 </aside>
                 <div id="content">
-                    <section class="products">
-                        <article>
-                            <a href="product.html"><img src="../images/11.jpg" alt=""></a>
-                            <h3><a href="product.html">Lorem ipsum dolor</a></h3>
-                            <h4><a href="product.html">$990.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/12.jpg" alt=""></a>
-                            <h3><a href="product.html">cupidatat non proident</a></h3>
-                            <h4><a href="product.html">$1 200.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/13.jpg" alt=""></a>
-                            <h3><a href="product.html">Duis aute irure</a></h3>
-                            <h4><a href="product.html">$2 650.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/14.jpg" alt=""></a>
-                            <h3><a href="product.html">magna aliqua</a></h3>
-                            <h4><a href="product.html">$3 500.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/15.jpg" alt=""></a>
-                            <h3><a href="product.html">Lorem ipsum dolor</a></h3>
-                            <h4><a href="product.html">$1 500.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/1.jpg" alt=""></a>
-                            <h3><a href="product.html">cupidatat non proident</a></h3>
-                            <h4><a href="product.html">$3 200.00</a></h4>
-                            <a href="cart.html" class="btn-add">Add to cart</a>
-                        </article>
-                        <article>
-                            <a href="product.html"><img src="../images/16.jpg" alt=""></a>
-                            <h3><a href="product.html">Duis aute irure</a></h3>
-                        </article>
-                        <article>
-                        </article>
+                    <section class="products" id="products-container">
+                        <!-- Ürünler JavaScript ile yüklenecek -->
                     </section>
                 </div>
                 <!-- / content -->
             </div>
-            <div class="pagination">
-                <ul>
-                    <li><a href="#"><span class="ico-prev"></span></a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><span class="ico-next"></span></a></li>
-                </ul>
-            </div>
+            <div class="pagination" id="pagination-container" style="display: none;"></div>
         </div>
         <!-- / container -->
     </div>
@@ -218,7 +212,7 @@
                 </div>
                 <div class="col newsletter">
                     <h3>Web Tasarım</h3>
-                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
                 <div class="col">
@@ -239,5 +233,103 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+// =============================
+// ÜRÜNLERİ YÜKLE VE SAYFALAMA
+// =============================
+function formatTL(value){
+    return '₺' + parseFloat(value || 0).toLocaleString('tr-TR', {minimumFractionDigits: 2});
+}
+
+function getProducts(){
+    try {
+        const list = JSON.parse(localStorage.getItem('products')) || [];
+        return Array.isArray(list) ? list : [];
+    } catch(e){
+        return [];
+    }
+}
+
+function updateCartHeader(){
+    try {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalQty = cart.reduce((sum, it) => sum + (Number(it.quantity) || 0), 0);
+        const totalPrice = cart.reduce((sum, it) => sum + ((Number(it.price)||0) * (Number(it.quantity)||0)), 0);
+        const headerLink = document.querySelector('.right-links a[href="cart.html"]');
+        if (headerLink){
+            headerLink.innerHTML = `<span class="ico-products"></span>${totalQty} ürün, ${formatTL(totalPrice)}`;
+            headerLink.setAttribute('aria-label', `Sepet: ${totalQty} ürün, toplam ${formatTL(totalPrice)}`);
+        }
+    } catch(e){}
+}
+
+function quickAddToCart(productId){
+    const products = getProducts();
+    const p = products.find(x => x.id == productId);
+    if(!p) return;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const idx = cart.findIndex(ci => ci.id == p.id);
+    if (idx >= 0){
+        cart[idx].quantity = (Number(cart[idx].quantity) || 0) + 1;
+    } else {
+        cart.push({ id: p.id, name: p.name, price: Number(p.price)||0, image: p.image, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartHeader();
+}
+
+function renderProducts(page=1, perPage=12){
+    const all = getProducts();
+    const container = document.getElementById('products-container');
+    const topPag = document.getElementById('top-pagination');
+    const bottomPag = document.getElementById('pagination-container');
+
+    if (!container) return;
+
+    if (all.length === 0){
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:#777;">Henüz ürün bulunmuyor. <a href="../admin/products-manage.html">Ürün eklemek için admin paneline gidin</a>.</div>`;
+        if (topPag) topPag.style.display = 'none';
+        if (bottomPag) bottomPag.style.display = 'none';
+        return;
+    }
+
+    const totalPages = Math.max(1, Math.ceil(all.length / perPage));
+    const current = Math.min(Math.max(1, page), totalPages);
+    const start = (current - 1) * perPage;
+    const items = all.slice(start, start + perPage);
+
+    container.innerHTML = items.map(product => `
+        <article role="listitem">
+            <img src="${product.image}" alt="${product.name} ürün görseli" loading="lazy">
+            <h3>${product.name}</h3>
+            <h4>${formatTL(product.price)}</h4>
+            <div class="product-actions">
+                <a href="product.html?id=${encodeURIComponent(product.id)}" class="btn-add" aria-label="${product.name} detaylarını görüntüle">Detayları Gör</a>
+                <button class="btn-add" type="button" onclick="quickAddToCart(${product.id})" aria-label="${product.name} ürünü sepete ekle">Sepete Ekle</button>
+            </div>
+        </article>
+    `).join('');
+
+    // Sayfalama
+    function buildPagination(el){
+        if(!el) return;
+        el.style.display = 'block';
+        let html = '<ul>';
+        for(let i=1;i<=totalPages;i++){
+            const active = i === current ? ' class="active"' : '';
+            html += `<li${active}><a href="#" onclick="renderProducts(${i}, ${perPage}); return false;">${i}</a></li>`;
+        }
+        html += '</ul>';
+        el.innerHTML = html;
+    }
+    buildPagination(topPag);
+    buildPagination(bottomPag);
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    updateCartHeader();
+    renderProducts(1, 12);
+});
+    </script>
 </body>
 </html>

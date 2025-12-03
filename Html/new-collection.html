@@ -50,6 +50,7 @@
                 <li><a href="about.html">Hakkımızda</a></li>
                 <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
                 <li><a href="announcements.html">Duyurular</a></li>
+                <li><a href="statistics.html">İstatistikler</a></li>
                 <li><a href="contact.html">İletişim</a></li>
                 <li><a href="cart.html">Sepet</a></li>
             </ul>
@@ -89,47 +90,17 @@
                     </section>
                 </aside>
                 <div id="content">
-                    <h1>Yeni Koleksiyon - Eternal Elegance</h1>
-                    <p>En yeni tasarımlarımızı içeren "Eternal Elegance" koleksiyonumuzla tanışın. Modern çizgiler ve klasik zarafet buluşuyor.</p>
+                    <h1>Yeni Koleksiyon</h1>
+                    <p>En yeni tasarımlarımızı içeren koleksiyonumuzla tanışın. Modern çizgiler ve klasik zarafet buluşuyor.</p>
                     
-                    <section class="products">
-                        <article>
-                            <img src="../images/0.jpg" alt="Yeni Koleksiyon">
-                            <h3>Eternal Elegance Set</h3>
-                            <h4>₺7.850,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/01.jpg" alt="Yeni Koleksiyon">
-                            <h3>Diamond Infinity Kolye</h3>
-                            <h4>₺4.250,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/02.jpg" alt="Yeni Koleksiyon">
-                            <h3>Rose Gold Bracelet</h3>
-                            <h4>₺3.680,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/1.jpg" alt="Yeni Koleksiyon">
-                            <h3>Modern Classic Ring</h3>
-                            <h4>₺2.950,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/11.jpg" alt="Yeni Koleksiyon">
-                            <h3>Pearl Drop Earrings</h3>
-                            <h4>₺1.780,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/12.jpg" alt="Yeni Koleksiyon">
-                            <h3>Geometric Pendant</h3>
-                            <h4>₺2.150,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
+                    <section class="products" id="products-container">
+                        <!-- Ürünler JavaScript ile yüklenecek -->
                     </section>
+                    
+                    <!-- Pagination -->
+                    <ul class="pagination" id="pagination-container" style="display: none;">
+                        <!-- Sayfalama JavaScript ile oluşturulacak -->
+                    </ul>
                 </div>
             </div>
         </div>
@@ -183,5 +154,68 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+let currentPage = 1;
+const productsPerPage = 8;
+let allCategoryProducts = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadCategoryProducts('new-collection');
+});
+
+function loadCategoryProducts(category) {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    allCategoryProducts = products.filter(p => p.category === category);
+    
+    if (allCategoryProducts.length > 0) {
+        displayPage(1);
+        createPagination();
+    } else {
+        document.getElementById('products-container').innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1/-1;">Bu kategoride henüz ürün bulunmamaktadır.</p>';
+    }
+}
+
+function displayPage(page) {
+    currentPage = page;
+    const startIndex = (page - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const pageProducts = allCategoryProducts.slice(startIndex, endIndex);
+    
+    const productsContainer = document.getElementById('products-container');
+    productsContainer.innerHTML = pageProducts.map(product => `
+        <article>
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <h4>₺${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h4>
+            <div class="product-actions">
+                <a href="product.html?id=${product.id}" class="btn-add">Detayları Gör</a>
+                <button class="btn-add" type="button" onclick="quickAddToCart(${product.id})">Sepete Ekle</button>
+            </div>
+        </article>
+    `).join('');
+    
+    updatePagination();
+}
+
+function createPagination() {
+    const totalPages = Math.ceil(allCategoryProducts.length / productsPerPage);
+    if (totalPages > 1) {
+        document.getElementById('pagination-container').style.display = 'flex';
+    }
+}
+
+function updatePagination() {
+    const totalPages = Math.ceil(allCategoryProducts.length / productsPerPage);
+    const paginationContainer = document.getElementById('pagination-container');
+    
+    let paginationHTML = '';
+    
+    for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `<li><a href="#" onclick="displayPage(${i}); return false;" class="${i === currentPage ? 'active' : ''}">${i}</a></li>`;
+    }
+    
+    paginationContainer.innerHTML = paginationHTML;
+}
+    </script>
 </body>
 </html>

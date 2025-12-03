@@ -25,33 +25,36 @@
         </div>
     </header>
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
-                        <li><a href="necklaces.html">Kolyeler</a></li>
-                        <li><a href="earrings.html">Küpeler</a></li>
-                        <li><a href="rings.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
     </nav>
@@ -93,50 +96,17 @@
                     <h1>Küpeler</h1>
                     <p>Yüzünüzü aydınlatan şık küpe modellerimizi keşfedin. Günlük kullanımdan özel davetlere kadar her anınıza uygun tasarımlar.</p>
                     
-                    <section class="products">
-                        <article>
-                            <img src="../images/3.jpg" alt="Elmas Küpe">
-                            <h3>Elmas Taşlı Sallantılı Küpe</h3>
-                            <h4>₺2.850,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/4.jpg" alt="İnci Küpe">
-                            <h3>Doğal İnci Küpe</h3>
-                            <h4>₺1.250,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/1.jpg" alt="Halka Küpe">
-                            <h3>Altın Halka Küpe</h3>
-                            <h4>₺750,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/11.jpg" alt="Taşlı Küpe">
-                            <h3>Renkli Taş Küpe</h3>
-                            <h4>₺1.680,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/12.jpg" alt="Minimalist Küpe">
-                            <h3>Minimalist Stud Küpe</h3>
-                            <h4>₺450,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
-                        <article>
-                            <img src="../images/13.jpg" alt="Gümüş Küpe">
-                            <h3>Gümüş Damla Küpe</h3>
-                            <h4>₺980,00</h4>
-                            <a href="product.html" class="btn-add">Detayları Gör</a>
-                        </article>
+                    <section class="products" id="products-container">
+                        <!-- Ürünler JavaScript ile yüklenecek -->
                     </section>
+                    <!-- Pagination -->
+                    <ul class="pagination" id="pagination-container" style="display: none;"></ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer id="footer">
+    <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="cols">
                 <div class="col">
@@ -166,7 +136,7 @@
                 </div>
                 <div class="col newsletter">
                     <h3>Web Tasarım</h3>
-                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencileri tarafından tasarlanmıştır.</p>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tarafından tasarlanmıştır.</p>
                     <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
                 <div class="col">
@@ -178,6 +148,7 @@
             </div>
             <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
+        <!-- / container -->
     </footer>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -218,11 +189,13 @@ function displayPage(page) {
             <h3>${product.name}</h3>
             <h4>₺${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h4>
             <a href="product.html?id=${product.id}" class="btn-add">Detayları Gör</a>
+            <a href="#" class="btn-grey" onclick="quickAddToCart(${product.id}); return false;" style="margin-top: 5px;">Sepete Ekle</a>
         </article>
     `).join('');
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
     updatePagination();
+    updateCartHeader();
 }
 
 function createPagination() {
@@ -262,6 +235,52 @@ function updatePagination() {
 function changePage(page) {
     displayPage(page);
 }
+
+function quickAddToCart(productId) {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) {
+        alert('Ürün bulunamadı!');
+        return;
+    }
+    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartHeader();
+    
+    alert(product.name + ' sepete eklendi!');
+}
+
+function updateCartHeader() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    const cartLink = document.querySelector('.right-links a[href="cart.html"]');
+    if (cartLink) {
+        cartLink.innerHTML = `<span class="ico-products"></span>${totalItems} ürün, ₺${totalPrice.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+    }
+}
+
+// Sayfa yüklendiğinde header'ı güncelle
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartHeader();
+});
 </script>
 </body>
 </html>

@@ -101,34 +101,36 @@
         </div>
     </header>
 
-    <nav id="menu">
+    <nav id="menu" role="navigation" aria-label="Ana menü">
         <div class="container">
-            <div class="trigger"></div>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="menu-item has-submenu">
-                    <a href="products.html">Ürünlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="new-collection.html">Yeni Koleksiyon</a></li>
-                        <li><a href="necklaces.html">Kolyeler</a></li>
-                        <li><a href="earrings.html">Küpeler</a></li>
-                        <li><a href="rings.html">Yüzükler</a></li>
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
                     </ul>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a href="#birimlerimiz">Birimlerimiz</a>
-                    <ul class="submenu">
-                        <li><a href="text-page.html">Satış Birimi</a></li>
-                        <li><a href="text-page.html">Müşteri Hizmetleri</a></li>
-                        <li><a href="text-page.html">Tasarım Ekibi</a></li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html#satis" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html#musteri" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html#tasarim" role="menuitem">Tasarım Ekibi</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">Hakkımızda</a></li>
-                <li><a href="mission-vision.html">Misyon-Vizyon</a></li>
-                <li><a href="announcements.html">Duyurular</a></li>
-                <li><a href="statistics.html" class="active">İstatistikler</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-                <li><a href="cart.html">Sepet</a></li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem" aria-current="page">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
             </ul>
         </div>
     </nav>
@@ -143,8 +145,7 @@
     </div>
 
     <div id="body">
-        <div class="container">
-            <div class="statistics-page">
+        <div class="container statistics-page">
                 <div class="stats-intro">
                     <h1>Sayılarla Emre Mücevherat</h1>
                     <p>15 yıllık deneyimimizi rakamlarla sizinle paylaşıyoruz</p>
@@ -197,7 +198,7 @@
         </div>
     </div>
 
-    <footer id="footer">
+    <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="cols">
                 <div class="col">
@@ -205,6 +206,9 @@
                     <ul>
                         <li><a href="#">Fusce eget dolor adipiscing </a></li>
                         <li><a href="#">Posuere nisl eu venenatis gravida</a></li>
+                        <li><a href="#">Morbi dictum ligula mattis</a></li>
+                        <li><a href="#">Etiam diam vel dolor luctus dapibus</a></li>
+                        <li><a href="#">Vestibulum ultrices magna </a></li>
                     </ul>
                 </div>
                 <div class="col media">
@@ -212,13 +216,20 @@
                     <ul class="social">
                         <li><a href="#"><span class="ico ico-fb"></span>Facebook</a></li>
                         <li><a href="#"><span class="ico ico-tw"></span>Twitter</a></li>
+                        <li><a href="#"><span class="ico ico-gp"></span>Google+</a></li>
+                        <li><a href="#"><span class="ico ico-pi"></span>Pinterest</a></li>
                     </ul>
                 </div>
                 <div class="col contact">
                     <h3>İletişim Bilgileri</h3>
-                    <p>Emre Mücevherat<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
                     <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
                     <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
+                </div>
+                <div class="col newsletter">
+                    <h3>Web Tasarım</h3>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tarafından tasarlanmıştır.</p>
+                    <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
                 </div>
                 <div class="col">
                     <h3>Yönetim</h3>
@@ -229,6 +240,7 @@
             </div>
             <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
         </div>
+        <!-- / container -->
     </footer>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
