@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yorum Yönetimi - Admin Paneli</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+        
+        .admin-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: #1f2937;
+            border-bottom-color: #1f2937;
+        }
+        
+        .search-box {
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .review-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        
+        .review-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .review-info h3 {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .review-meta {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .review-rating {
+            font-size: 20px;
+            color: #f39c12;
+        }
+        
+        .review-product {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .review-comment {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #fafafa;
+            border-left: 3px solid #1f2937;
+            border-radius: 4px;
+        }
+        
+        .review-actions {
+            display: flex;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-approve {
+            background: #10b981;
+            color: #fff;
+        }
+        
+        .btn-approve:hover {
+            background: #059669;
+        }
+        
+        .btn-reject {
+            background: #ef4444;
+            color: #fff;
+        }
+        
+        .btn-reject:hover {
+            background: #dc2626;
+        }
+        
+        .btn-delete {
+            background: #6b7280;
+            color: #fff;
+        }
+        
+        .btn-delete:hover {
+            background: #4b5563;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-approved {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <a href="../Html/index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
+            <div class="right-links">
+                <ul>
+                    <li><a href="../Html/index.html">← Siteye Dön</a></li>
+                    <li><a href="dashboard.html">Admin Paneli</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="body">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>💬 Müşteri Yorumları Yönetimi</h1>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalReviews">0</div>
+                    <div class="stat-label">Toplam Yorum</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="pendingReviews">0</div>
+                    <div class="stat-label">Onay Bekleyen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="approvedReviews">0</div>
+                    <div class="stat-label">Onaylanmış</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgRating">0.0</div>
+                    <div class="stat-label">Ortalama Puan</div>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchTab('all')">Tümü</button>
+                <button class="tab-btn" onclick="switchTab('pending')">Onay Bekleyen</button>
+                <button class="tab-btn" onclick="switchTab('approved')">Onaylanmış</button>
+                <button class="tab-btn" onclick="switchTab('5star')">5 Yıldız</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Yorum ara (isim, ürün, yorum)..." onkeyup="filterReviews()">
+            </div>
+
+            <div id="reviewsContainer"></div>
+        </div>
+    </div>
+
+    <footer id="footer" role="contentinfo">
+        <div class="container">
+            <p class="copy">Copyright 2025 Emre Mücevherat Admin Panel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        let allReviews = [];
+        let allProducts = [];
+        let currentTab = 'all';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            updateStats();
+            displayReviews('all');
+        });
+
+        function loadData() {
+            allReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            allProducts = JSON.parse(localStorage.getItem('products')) || [];
+        }
+
+        function saveReviews() {
+            localStorage.setItem('reviews', JSON.stringify(allReviews));
+        }
+
+        function getProductName(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            return product ? product.name : 'Bilinmeyen Ürün';
+        }
+
+        function getStarsHTML(rating) {
+            let stars = '';
+            for(let i = 1; i <= 5; i++){
+                stars += i <= rating ? '⭐' : '☆';
+            }
+            return stars;
+        }
+
+        function updateStats() {
+            const total = allReviews.length;
+            const pending = allReviews.filter(r => !r.approved && !r.rejected).length;
+            const approved = allReviews.filter(r => r.approved).length;
+            
+            let avgRating = 0;
+            if(approved > 0) {
+                const sum = allReviews.filter(r => r.approved).reduce((acc, r) => acc + r.rating, 0);
+                avgRating = (sum / approved).toFixed(1);
+            }
+
+            document.getElementById('totalReviews').textContent = total;
+            document.getElementById('pendingReviews').textContent = pending;
+            document.getElementById('approvedReviews').textContent = approved;
+            document.getElementById('avgRating').textContent = avgRating;
+        }
+
+        function displayReviews(filter) {
+            let filtered = [...allReviews];
+
+            if(filter === 'pending') {
+                filtered = filtered.filter(r => !r.approved && !r.rejected);
+            } else if(filter === 'approved') {
+                filtered = filtered.filter(r => r.approved);
+            } else if(filter === '5star') {
+                filtered = filtered.filter(r => r.rating === 5);
+            }
+
+            filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const container = document.getElementById('reviewsContainer');
+
+            if(filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>Henüz yorum bulunmamaktadır.</p></div>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(review => {
+                const status = review.approved ? 'approved' : (review.rejected ? 'rejected' : 'pending');
+                const statusText = review.approved ? 'Onaylanmış' : (review.rejected ? 'Reddedilmiş' : 'Onay Bekliyor');
+                const statusClass = `status-${status}`;
+
+                return `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">${review.userName.charAt(0).toUpperCase()}</div>
+                                <div class="review-info">
+                                    <h3>${review.userName}</h3>
+                                    <div class="review-meta">
+                                        ${new Date(review.date).toLocaleDateString('tr-TR', {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="review-rating">${getStarsHTML(review.rating)}</div>
+                                <span class="status-badge ${statusClass}">${statusText}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-product">
+                            📦 Ürün: <strong>${getProductName(review.productId)}</strong>
+                        </div>
+                        
+                        <div class="review-comment">${review.comment}</div>
+                        
+                        <div style="font-size: 13px; color: #999; margin-bottom: 15px;">
+                            👍 Faydalı: ${review.helpful || 0} | 👎 Faydalı Değil: ${review.notHelpful || 0}
+                        </div>
+                        
+                        <div class="review-actions">
+                            ${!review.approved ? `<button class="btn btn-approve" onclick="approveReview(${review.id})">✓ Onayla</button>` : ''}
+                            ${!review.rejected ? `<button class="btn btn-reject" onclick="rejectReview(${review.id})">✗ Reddet</button>` : ''}
+                            <button class="btn btn-delete" onclick="deleteReview(${review.id})">🗑 Sil</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function approveReview(id) {
+            const review = allReviews.find(r => r.id === id);
+            if(review) {
+                review.approved = true;
+                review.rejected = false;
+                saveReviews();
+                showAlert('Yorum onaylandı!', 'success');
+                updateStats();
+                displayReviews(currentTab);
+            }
+        }
+
+        function rejectReview(id) {
+            if(confirm('Bu yorumu reddetmek istediğinize emin misiniz?')) {
+                const review = allReviews.find(r => r.id === id);
+                if(review) {
+                    review.rejected = true;
+                    review.approved = false;
+                    saveReviews();
+                    showAlert('Yorum reddedildi!', 'success');
+                    updateStats();
+                    displayReviews(currentTab);
+                }
+            }
+        }
+
+        function deleteReview(id) {
+            if(confirm('Bu yorumu kalıcı olarak silmek istediğinize emin misiniz?')) {
+                allReviews = allReviews.filter(r => r.id !== id);
+                saveReviews();
+                showAlert('Yorum silindi!', 'success');
+                updateStats();
+                displayReviews(currentTab);
+            }
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            displayReviews(tab);
+        }
+
+        function filterReviews() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allReviews.filter(r => 
+                r.userName.toLowerCase().includes(searchTerm) ||
+                r.comment.toLowerCase().includes(searchTerm) ||
+                getProductName(r.productId).toLowerCase().includes(searchTerm)
+            );
+
+            const container = document.getElementById('reviewsContainer');
+            if(filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>Arama sonucu bulunamadı.</p></div>';
+                return;
+            }
+
+            filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            container.innerHTML = filtered.map(review => {
+                const status = review.approved ? 'approved' : (review.rejected ? 'rejected' : 'pending');
+                const statusText = review.approved ? 'Onaylanmış' : (review.rejected ? 'Reddedilmiş' : 'Onay Bekliyor');
+                const statusClass = `status-${status}`;
+
+                return `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">${review.userName.charAt(0).toUpperCase()}</div>
+                                <div class="review-info">
+                                    <h3>${review.userName}</h3>
+                                    <div class="review-meta">
+                                        ${new Date(review.date).toLocaleDateString('tr-TR', {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="review-rating">${getStarsHTML(review.rating)}</div>
+                                <span class="status-badge ${statusClass}">${statusText}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-product">
+                            📦 Ürün: <strong>${getProductName(review.productId)}</strong>
+                        </div>
+                        
+                        <div class="review-comment">${review.comment}</div>
+                        
+                        <div style="font-size: 13px; color: #999; margin-bottom: 15px;">
+                            👍 Faydalı: ${review.helpful || 0} | 👎 Faydalı Değil: ${review.notHelpful || 0}
+                        </div>
+                        
+                        <div class="review-actions">
+                            ${!review.approved ? `<button class="btn btn-approve" onclick="approveReview(${review.id})">✓ Onayla</button>` : ''}
+                            ${!review.rejected ? `<button class="btn btn-reject" onclick="rejectReview(${review.id})">✗ Reddet</button>` : ''}
+                            <button class="btn btn-delete" onclick="deleteReview(${review.id})">🗑 Sil</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alertContainer.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

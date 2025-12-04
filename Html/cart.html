@@ -6,6 +6,7 @@
     <title>Emre Mücevherat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" media="all" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,7 +18,7 @@
             <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
-                    <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
+                    <li><a href="cart.html"><span class="ico-products"></span></a></li>
                     <li><a href="#"><span class="ico-account"></span>Hesap</a></li>
                     <li><a href="#"><span class="ico-signout"></span>Çıkış</a></li>
                 </ul>
@@ -103,7 +104,10 @@
                         <h4>Ara Toplam: <span id="subtotal">₺0.00</span></h4>
                         <p>+Kargo: <span id="shipping">₺50.00</span></p>
                         <h3>Ödenecek Tutar: <strong id="final-total">₺50.00</strong></h3>
-                        <a href="#" class="btn-grey" onclick="finalizeOrder(); return false;">Siparişi Tamamla</a>
+                        <div style="margin-top: 20px;">
+                            <a href="#" class="btn-grey" onclick="clearCart(); return false;" style="background: #dc3545; margin-right: 10px;">Sepeti Temizle</a>
+                            <a href="#" class="btn-grey" onclick="finalizeOrder(); return false;">Siparişi Tamamla</a>
+                        </div>
                     </div>
                 </div>
         
@@ -172,7 +176,32 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         loadCart();
+        
+        // İlk kez açıldığında demo sepet oluştur (opsiyonel)
+        if (!localStorage.getItem('cartDemoShown') && cart.length === 0) {
+            // Demo ürünler ekle
+            cart = [
+                {
+                    id: 1,
+                    name: "Elmas Taşlı Altın Kolye",
+                    price: 3250,
+                    image: "../images/1.jpg",
+                    quantity: 1
+                },
+                {
+                    id: 3,
+                    name: "Elmas Taşlı Sallantılı Küpe",
+                    price: 2850,
+                    image: "../images/3.jpg",
+                    quantity: 2
+                }
+            ];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartDemoShown', 'true');
+        }
+        
         displayCart();
+        updateCartHeader();
     });
 
     function loadCart() {
@@ -200,13 +229,15 @@
         cartContent.style.display = 'block';
 
         // Ürün listesini oluştur
+        console.log('Sepetteki ürünler:', cart);
         cartItemsContainer.innerHTML = cart.map(item => {
             const itemTotal = item.price * item.quantity;
+            console.log('Ürün render ediliyor - ID:', item.id, 'Type:', typeof item.id, 'Name:', item.name);
             return `
                 <tr data-id="${item.id}">
                     <td class="items">
                         <div class="image">
-                            <img src="${item.image}" alt="${item.name}">
+                            <img src="${item.image}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover;">
                         </div>
                         <h3><a href="product.html?id=${item.id}">${item.name}</a></h3>
                     </td>
@@ -220,7 +251,7 @@
                     </td>
                     <td class="total">₺${itemTotal.toLocaleString('tr-TR', {minimumFractionDigits: 2})}</td>
                     <td class="delete">
-                        <a href="#" class="ico-del" onclick="removeFromCart(${item.id}); return false;"></a>
+                        <a href="#" class="ico-del" onclick="console.log('Silme isteği - ID:', ${item.id}); removeFromCart(${item.id}); return false;" title="Sepetten Çıkar">🗑️</a>
                     </td>
                 </tr>
             `;
@@ -240,7 +271,7 @@
     }
 
     function updateQuantity(productId, newQuantity) {
-        const item = cart.find(item => item.id === productId);
+        const item = cart.find(item => item.id == productId);
         if (item) {
             item.quantity = parseInt(newQuantity);
             saveCart();
@@ -249,18 +280,47 @@
     }
 
     function removeFromCart(productId) {
-        cart = cart.filter(item => item.id !== productId);
-        saveCart();
-        displayCart();
+        console.log('removeFromCart çağrıldı - productId:', productId, 'type:', typeof productId);
+        console.log('Mevcut sepet:', JSON.stringify(cart));
+        
+        if (confirm('Bu ürünü sepetten çıkarmak istediğinizden emin misiniz?')) {
+            const beforeLength = cart.length;
+            const removedItem = cart.find(item => item.id == productId);
+            console.log('Silinecek ürün bulundu:', removedItem);
+            
+            cart = cart.filter(item => {
+                const keep = item.id != productId;
+                console.log(`Item ID: ${item.id} (${typeof item.id}), ProductID: ${productId} (${typeof productId}), Keep: ${keep}`);
+                return keep;
+            });
+            
+            console.log('Filtreleme sonrası sepet uzunluğu:', cart.length);
+            
+            if (cart.length < beforeLength) {
+                console.log('✓ Ürün başarıyla silindi!');
+                saveCart();
+                displayCart();
+            } else {
+                console.error('✗ Ürün silinemedi!');
+                console.error('ProductID:', productId, 'Type:', typeof productId);
+                console.error('Cart IDs:', cart.map(item => `${item.id} (${typeof item.id})`));
+                alert('Ürün silinirken bir hata oluştu! Console\'u kontrol edin.');
+            }
+        }
     }
 
     function updateCartHeader() {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        
-        const cartLink = document.querySelector('.right-links a[href="cart.html"]');
-        if (cartLink) {
-            cartLink.innerHTML = `<span class="ico-products"></span>${totalItems} ürün, ₺${totalPrice.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+        // Global fonksiyonu kullan
+        if (typeof updateGlobalCartHeader === 'function') {
+            updateGlobalCartHeader();
+        }
+    }
+
+    function clearCart() {
+        if (confirm('Sepetteki tüm ürünleri silmek istediğinizden emin misiniz?')) {
+            cart = [];
+            saveCart();
+            displayCart();
         }
     }
 
@@ -281,8 +341,9 @@
         }
     }
 
-    // Sayfa yüklendiğinde header'ı güncelle
+    // Sayfa yüklenдиğinde header'ı güncelle
     updateCartHeader();
     </script>
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>

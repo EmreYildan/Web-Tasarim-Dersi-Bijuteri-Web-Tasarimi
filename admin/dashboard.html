@@ -106,6 +106,8 @@
                 <li><a href="products-manage.html">📦 Ürün Yönetimi</a></li>
                 <li><a href="announcements-manage.html">📢 Duyuru Yönetimi</a></li>
                 <li><a href="slider-manage.html">🎬 Slider Yönetimi</a></li>
+                <li><a href="faq-manage.html">❓ SSS Yönetimi</a></li>
+                <li><a href="reviews-manage.html">💬 Yorum Yönetimi</a></li>
                 <li><a href="../Html/index.html" target="_blank">🌐 Siteyi Görüntüle</a></li>
             </ul>
         </nav>
@@ -127,8 +129,12 @@
                     <div class="number" id="totalSliders">0</div>
                 </div>
                 <div class="stat-card">
-                    <h3>Son Güncelleme</h3>
-                    <div class="number" style="font-size: 16px;" id="lastUpdate">-</div>
+                    <h3>SSS Soru Sayısı</h3>
+                    <div class="number" id="totalFaqs">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Müşteri Yorumları</h3>
+                    <div class="number" id="totalReviews">0</div>
                 </div>
             </div>
             
@@ -152,11 +158,14 @@
             const products = JSON.parse(localStorage.getItem('products')) || [];
             const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
             const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+            const faqs = JSON.parse(localStorage.getItem('faqs')) || [];
+            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
             document.getElementById('totalProducts').textContent = products.length;
             document.getElementById('totalAnnouncements').textContent = announcements.length;
             document.getElementById('totalSliders').textContent = sliders.length;
-            document.getElementById('lastUpdate').textContent = new Date().toLocaleString('tr-TR');
+            document.getElementById('totalFaqs').textContent = faqs.length;
+            document.getElementById('totalReviews').textContent = reviews.length;
         }
 
         function logout() {

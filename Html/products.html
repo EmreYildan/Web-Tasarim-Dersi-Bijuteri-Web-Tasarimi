@@ -59,17 +59,16 @@
         border-color:#9ca3af; 
         transform: translateY(-2px); 
         box-shadow: 0 4px 10px rgba(0,0,0,.12); 
-    }
+        }
     </style>
+    <link rel="stylesheet" href="../css/chatbot.css">
 </head>
-<body>
-
-    <header id="header">
+<body>    <header id="header">
         <div class="container">
             <a href="index.html" id="logo" title="Emre Mücevherat">Emre Mücevherat</a>
             <div class="right-links">
                 <ul>
-                    <li><a href="cart.html"><span class="ico-products"></span>3 ürün, ₺4.500,00</a></li>
+                    <li><a href="cart.html"><span class="ico-products"></span></a></li>
                     <li><a href="#"><span class="ico-account"></span>Hesap</a></li>
                     <li><a href="#"><span class="ico-signout"></span>Çıkış</a></li>
                 </ul>
@@ -186,13 +185,13 @@
         <div class="container">
             <div class="cols">
                 <div class="col">
-                    <h3>Frequently Asked Questions</h3>
+                    <h3>Sıkça Sorulan Sorular</h3>
                     <ul>
-                        <li><a href="#">Fusce eget dolor adipiscing </a></li>
-                        <li><a href="#">Posuere nisl eu venenatis gravida</a></li>
-                        <li><a href="#">Morbi dictum ligula mattis</a></li>
-                        <li><a href="#">Etiam diam vel dolor luctus dapibus</a></li>
-                        <li><a href="#">Vestibulum ultrices magna </a></li>
+                        <li><a href="sıkçasorulansorular.html">Sipariş Nasıl Verilir?</a></li>
+                        <li><a href="sıkçasorulansorular.html">Kargo ve Teslimat</a></li>
+                        <li><a href="sıkçasorulansorular.html">İade Şartları</a></li>
+                        <li><a href="sıkçasorulansorular.html">Ödeme Yöntemleri</a></li>
+                        <li><a href="sıkçasorulansorular.html">Ürün Bakımı</a></li>
                     </ul>
                 </div>
                 <div class="col media">
@@ -233,6 +232,7 @@
     <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/chatbot.js"></script>
     <script>
 // =============================
 // ÜRÜNLERİ YÜKLE VE SAYFALAMA
@@ -275,7 +275,14 @@ function quickAddToCart(productId){
         cart.push({ id: p.id, name: p.name, price: Number(p.price)||0, image: p.image, quantity: 1 });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartHeader();
+    
+    // Header'ı güncelle
+    if (typeof updateGlobalCartHeader === 'function') {
+        updateGlobalCartHeader();
+    }
+    
+    // Kullanıcıya geri bildirim
+    alert('✓ Ürün sepete eklendi!');
 }
 
 function renderProducts(page=1, perPage=12){

@@ -73,4 +73,24 @@ $(document).ready(function() {
 	$(window).resize(function() {
 		mobileCheck();
 	});
+	
+	// Sepet header'ını güncelle
+	updateGlobalCartHeader();
 });
+
+// Global Sepet Header Güncelleme Fonksiyonu
+function updateGlobalCartHeader() {
+	const cart = JSON.parse(localStorage.getItem('cart')) || [];
+	const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+	
+	const cartLinks = document.querySelectorAll('.right-links a[href="cart.html"]');
+	cartLinks.forEach(cartLink => {
+		if (totalItems > 0) {
+			cartLink.innerHTML = `<span class="ico-products"></span><span style="background: #dc3545; color: white; border-radius: 50%; padding: 2px 6px; font-size: 11px; position: absolute; top: -5px; margin-left: -10px;">${totalItems}</span>`;
+			cartLink.setAttribute('title', `Sepetinizde ${totalItems} ürün var`);
+		} else {
+			cartLink.innerHTML = `<span class="ico-products"></span>`;
+			cartLink.setAttribute('title', 'Sepet');
+		}
+	});
+}
