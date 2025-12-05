@@ -16,18 +16,19 @@ Bu projede bijuteri sektörüne uygun, modern ve responsive bir web sitesi tasar
 
 ---
 
-# 🧭 Proje Akışı
-
+```markdown
 ```mermaid
 flowchart TD
-    A[Proje Konusu Belirlendi<br>Bijuteri Sektörü] --> B[Ön Araştırma Yapıldı]
-    B --> C[Hazır Şablon Seçimi]
-    C --> D[Şablonun Özelleştirilmesi]
-    D --> E[Sitelerin Kodlanması]
-    E --> F[Admin Paneli Mantığının Eklenmesi]
-    F --> G[Chart Sayfası ve İstatistikler]
-    G --> H[UX Geliştirmeleri ve Ek Yenilikler]
-    H --> I[Son Testler ve Yayınlama]
+    A("Proje Konusu Belirlendi") --> B("Ön Araştırma Yapıldı")
+    B --> C("Hazır Şablon Seçimi")
+    C --> D("Şablonun Özelleştirilmesi")
+    D --> E("Site Kodlama Süreci")
+    E --> F("Admin Paneli Yapısı")
+    F --> G("Chart & İstatistik Sayfası")
+    G --> H("UX Geliştirmeleri")
+    H --> I("Son Testler & Yayınlama")
+
+---
 
 #🎯 Proje Amacı
 
@@ -49,31 +50,48 @@ Hazır bir responsive şablonun, modern web tasarım ilkelerine uygun şekilde �
 
 -Kullanıcı akışı incelenmiştir.
 
-mindmap
-  root((Site))
-    Html
-      about.html
-      announcements.html
-      Ürünler
-      İstatistikler
-    Ürünler
-      Yüzükler
-      Bileklikler
-      Kolye Modelleri
-    Birimler
-      Tasarım Ekibi
-      Üretim Ekibi
-      Satış & Destek
-    Hakkımızda
-      Misyon
-      Vizyon
-    İletişim
-      Harita
-      Form
-    Admin Paneli
-      Duyuru Yönetimi
-      Ürün Yönetimi
-      Sayfa Düzenleme
+---
+ EKLENEN YARATICI YENİLİKLER  
+1. Footer Kısımlarındaki Sıkça sorulan sorular kısımına 
+güncel bir yapı getirilerek admin panelinden 
+istenildiği gibi ayarlama yetkisi getirildi. 
+2. Server-Side kod olmadan Javascript kullanarak 
+yaptığım chatbot sayesinde kullanıcılarımıza daha 
+kolay bilgiye ulaşma imkanı sağlıyoruz ve 
+müşterilerimizin sitemizde keyifli vakit geçirmesini 
+hesaplıyoruz 
+3.Ürün yorum sistemi sektöre getirdiğim yenilik ile 
+birlikte argo kullanılan ve müessesemizi kirletmek 
+isteyen şahıslara karşı kullandığımız admin 
+tarafından kullanılan ürün yorum yönetim sistemi 
+getirildi ve istenilen yorumları engelleme silme 
+hakkına sahip olduğunu belirmek isterim. 
+4. Her sayfanın header kısmında bulunan sepept ikonu 
+ve 3 ürün 4500 ibaresi kaldırılarak daha dinamik bir 
+hale getirildi ve artık sepete ekleme ve çıkarma 
+durumu çalışmaktadır  keyifli alışverişleri dilerim. 
+5. Animasyon açma kapama durumu getirildi f12 
+basıldıktan sonra ctrl+shift+p kombinasyonuyla 
+komut kısmına Emulate CSS prefers-reduced-motion 
+butonuna tıklandıktan sonra DON’T Emulate CSS 
+prefers-reduced-motion  yazısı gelecektir ve bu sayfa 
+geçişlerindeki animasyonların Başdönmesi,vertigo 
+gibi Sağlık sorunları olan hastalarımızı etkilememesi 
+için oluşturulmuştur.
+
+---
+
+#🧪 Kullanılan Teknolojiler
+
+-HTML5
+-CSS3 / SASS
+-JavaScript / jQuery
+-Bootstrap
+-Google Maps Embed API
+-Chart.js / ApexCharts
+-FontAwesome
+
+---
 
 #  Proje İsterleri Tamamlanan Eksiksiz
 
