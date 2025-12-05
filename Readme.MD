@@ -16,25 +16,11 @@ Bu projede bijuteri sektörüne uygun, modern ve responsive bir web sitesi tasar
 
 ---
 
-```markdown
-```mermaid
-flowchart TD
-    A("Proje Konusu Belirlendi") --> B("Ön Araştırma Yapıldı")
-    B --> C("Hazır Şablon Seçimi")
-    C --> D("Şablonun Özelleştirilmesi")
-    D --> E("Site Kodlama Süreci")
-    E --> F("Admin Paneli Yapısı")
-    F --> G("Chart & İstatistik Sayfası")
-    G --> H("UX Geliştirmeleri")
-    H --> I("Son Testler & Yayınlama")
-
----
-
-#🎯 Proje Amacı
+# 🎯 Proje Amacı
 
 Hazır bir responsive şablonun, modern web tasarım ilkelerine uygun şekilde özelleştirilerek profesyonel bir kurumsal site yapısına dönüştürülmesi hedeflenmiştir.
 
-#🔍 Proje Konusu ve Ön Araştırma
+# 🔍 Proje Konusu ve Ön Araştırma
 
 -Sektör: Bijuteri / Mücevherat Satış Sitesi
 
@@ -55,21 +41,25 @@ Hazır bir responsive şablonun, modern web tasarım ilkelerine uygun şekilde �
 1. Footer Kısımlarındaki Sıkça sorulan sorular kısımına 
 güncel bir yapı getirilerek admin panelinden 
 istenildiği gibi ayarlama yetkisi getirildi. 
+
 2. Server-Side kod olmadan Javascript kullanarak 
 yaptığım chatbot sayesinde kullanıcılarımıza daha 
 kolay bilgiye ulaşma imkanı sağlıyoruz ve 
 müşterilerimizin sitemizde keyifli vakit geçirmesini 
 hesaplıyoruz 
+
 3.Ürün yorum sistemi sektöre getirdiğim yenilik ile 
 birlikte argo kullanılan ve müessesemizi kirletmek 
 isteyen şahıslara karşı kullandığımız admin 
 tarafından kullanılan ürün yorum yönetim sistemi 
 getirildi ve istenilen yorumları engelleme silme 
 hakkına sahip olduğunu belirmek isterim. 
+
 4. Her sayfanın header kısmında bulunan sepept ikonu 
 ve 3 ürün 4500 ibaresi kaldırılarak daha dinamik bir 
 hale getirildi ve artık sepete ekleme ve çıkarma 
 durumu çalışmaktadır  keyifli alışverişleri dilerim. 
+
 5. Animasyon açma kapama durumu getirildi f12 
 basıldıktan sonra ctrl+shift+p kombinasyonuyla 
 komut kısmına Emulate CSS prefers-reduced-motion 
@@ -81,7 +71,7 @@ için oluşturulmuştur.
 
 ---
 
-#🧪 Kullanılan Teknolojiler
+# 🧪 Kullanılan Teknolojiler
 
 -HTML5
 -CSS3 / SASS
@@ -93,7 +83,7 @@ için oluşturulmuştur.
 
 ---
 
-#  Proje İsterleri Tamamlanan Eksiksiz
+# Proje İsterleri Tamamlanan Eksiksiz
 
 - [x] Üst kısımda menü çubuğu yer almalıdır.
 - [x] Ürün/Hizmet Tanıtımı: En az üç adet tanıtımı yapılacak ürün veya hizmet için otomatik
