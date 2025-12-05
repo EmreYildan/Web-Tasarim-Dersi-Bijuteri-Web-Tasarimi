@@ -37,7 +37,8 @@ Hazır bir responsive şablonun, modern web tasarım ilkelerine uygun şekilde �
 -Kullanıcı akışı incelenmiştir.
 
 ---
- EKLENEN YARATICI YENİLİKLER  
+# EKLENEN YARATICI YENİLİKLER 
+
 1. Footer Kısımlarındaki Sıkça sorulan sorular kısımına 
 güncel bir yapı getirilerek admin panelinden 
 istenildiği gibi ayarlama yetkisi getirildi. 
@@ -74,12 +75,19 @@ için oluşturulmuştur.
 # 🧪 Kullanılan Teknolojiler
 
 -HTML5
+
 -CSS3 / SASS
+
 -JavaScript / jQuery
+
 -Bootstrap
+
 -Google Maps Embed API
--Chart.js / ApexCharts
+
+-Chart.js / ApexChart
+
 -FontAwesome
+
 
 ---
 
