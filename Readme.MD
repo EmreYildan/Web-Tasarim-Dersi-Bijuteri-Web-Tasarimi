@@ -1,4 +1,79 @@
-REDUCED ANİM ENABLED DİSABLED FARKINI GÖSTERECEĞİM
+# 💎 Bijuteri Web Sitesi Tasarımı – Proje Raporu
+**Emre Yasin Yıldan – Kocaeli Üniversitesi / Bilişim Sistemleri Mühendisliği**
+
+---
+
+## 🔗 Proje Bağlantıları
+- **Proje Klasörü:**  
+  https://drive.google.com/drive/folders/16LnYA_QpFZDsFLA3CWgDpYtl1DWNeWNu  
+- **GitHub Deposu:**  
+  https://github.com/EmreYildan/Web-Tasarim-Dersi-Bijuteri-Web-Tasarimi
+
+---
+
+# 📝 Özet
+Bu projede bijuteri sektörüne uygun, modern ve responsive bir web sitesi tasarlanmıştır. Hazır bir HTML/CSS/JS şablonu temel alınarak özelleştirilmiş ve kullanıcı deneyimini artırmaya yönelik çeşitli grafiksel, yapısal ve fonksiyonel geliştirmeler yapılmıştır.
+
+---
+
+# 🧭 Proje Akışı
+
+```mermaid
+flowchart TD
+    A[Proje Konusu Belirlendi<br>Bijuteri Sektörü] --> B[Ön Araştırma Yapıldı]
+    B --> C[Hazır Şablon Seçimi]
+    C --> D[Şablonun Özelleştirilmesi]
+    D --> E[Sitelerin Kodlanması]
+    E --> F[Admin Paneli Mantığının Eklenmesi]
+    F --> G[Chart Sayfası ve İstatistikler]
+    G --> H[UX Geliştirmeleri ve Ek Yenilikler]
+    H --> I[Son Testler ve Yayınlama]
+
+#🎯 Proje Amacı
+
+Hazır bir responsive şablonun, modern web tasarım ilkelerine uygun şekilde özelleştirilerek profesyonel bir kurumsal site yapısına dönüştürülmesi hedeflenmiştir.
+
+#🔍 Proje Konusu ve Ön Araştırma
+
+-Sektör: Bijuteri / Mücevherat Satış Sitesi
+
+-Rakip analizleri yapılarak:
+
+-Renk paletleri
+
+-Slider yerleşimleri
+
+-Ürün sunum biçimleri
+
+-Menü yapıları
+
+-Kullanıcı akışı incelenmiştir.
+
+mindmap
+  root((Site))
+    Html
+      about.html
+      announcements.html
+      Ürünler
+      İstatistikler
+    Ürünler
+      Yüzükler
+      Bileklikler
+      Kolye Modelleri
+    Birimler
+      Tasarım Ekibi
+      Üretim Ekibi
+      Satış & Destek
+    Hakkımızda
+      Misyon
+      Vizyon
+    İletişim
+      Harita
+      Form
+    Admin Paneli
+      Duyuru Yönetimi
+      Ürün Yönetimi
+      Sayfa Düzenleme
 
 #  Proje İsterleri Tamamlanan Eksiksiz
 
