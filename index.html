@@ -978,9 +978,10 @@ html {
     <script src="./js/main.js"></script>
     <script>
 // ============================================
-// 1. TEST VERİLERİNİ YÜKLE (İLK ÇALIŞTIRMADA)
+// 1. TEST VERİLERİNİ YÜKLE (HER ZAMAN GÜNCELLE)
 // ============================================
-if (!localStorage.getItem('dataInitialized')) {
+// Her sayfa yüklemesinde verileri güncelle (en yeni versiyonu sağlamak için)
+if (true) { // Daima yükle, her zaman güncel tut
     // Test Ürünleri
     const testProducts = [
         {
@@ -997,7 +998,7 @@ if (!localStorage.getItem('dataInitialized')) {
             name: "İnci Detaylı Gümüş Kolye",
             category: "necklaces",
             price: 1450,
-            image: "./images/11.jpg",
+            image: "./images/4.jpg",
             description: "İnci detaylı şık gümüş kolye. Doğal inci kullanılmıştır.",
             features: ["925 ayar gümüş", "Doğal inci", "Uzun ömürlü", "Su geçirmez"]
         },
@@ -1024,7 +1025,7 @@ if (!localStorage.getItem('dataInitialized')) {
             name: "Tek Taş Elmas Yüzük",
             category: "rings",
             price: 8500,
-            image: "./images/14.jpg",
+            image: "./images/5.jpg",
             description: "Nişan için ideal tek taş yüzük. GIA sertifikalı elmas.",
             features: ["18 ayar beyaz altın", "GIA sertifikalı elmas", "1 karat", "Özel kutulu"]
         },
@@ -1136,7 +1137,7 @@ if (!localStorage.getItem('dataInitialized')) {
     ];
     localStorage.setItem('announcements', JSON.stringify(testAnnouncements));
     
-    localStorage.setItem('dataInitialized', 'true');
+    // dataInitialized artık kullanmıyoruz - her zaman güncel tut
 }
 
 // ============================================
