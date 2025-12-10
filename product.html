@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <title>Diana’s jewelry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="stylesheet" media="all" href="../css/style.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
+    <link rel="stylesheet" media="all" href="./css/style.css">
+    <link rel="stylesheet" href="./css/chatbot.css">
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -80,7 +80,7 @@
             <div id="content" class="full">
                 <div class="product">
                     <div class="image">
-                        <img src="../images/5.jpg" alt="">
+                        <img src="./images/5.jpg" alt="">
                     </div>
                     <div class="details">
                         <h1>Lorem ipsum dolor</h1>
@@ -252,7 +252,7 @@
                 <div class="col">
                     <h3>Yönetim</h3>
                     <ul>
-                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                        <li><a href="./admin/index.html" target="_blank">Admin Panel</a></li>
                     </ul>
                 </div>
             </div>
@@ -264,10 +264,10 @@
 
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/chatbot.js"></script>
+    <script>window.jQuery || document.write("<script src='./js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+    <script src="./js/plugins.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/chatbot.js"></script>
     <script>
     // =============================
     // ÜRÜN DETAY YÜKLEME
@@ -276,9 +276,9 @@
         // Test verileri yoksa (kullanıcı direkt product.html'e geldiyse) initialize et
         if(!localStorage.getItem('products')){
             const fallbackProducts = [
-                { id: 1, name: "Elmas Taşlı Altın Kolye", category: "necklaces", price: 3250, image: "../images/1.jpg", description: "Zarif ve şık altın kolye. 18 ayar altından üretilmiştir. Elmas ağırlığı: 0.25 karat.", features: ["18 ayar altın","0.25 karat elmas","Özel tasarım","Garanti sertifikası"] },
-                { id: 3, name: "Elmas Taşlı Sallantılı Küpe", category: "earrings", price: 2850, image: "../images/3.jpg", description: "Özel günler için ideal sallantılı elmas detaylı küpe.", features: ["14 ayar altın","Elmas detay","Hafif yapı","Rahat kullanım"] },
-                { id: 5, name: "Tek Taş Elmas Yüzük", category: "rings", price: 8500, image: "../images/14.jpg", description: "Nişan ve evlilik teklifleri için klasik tek taş yüzük.", features: ["18 ayar beyaz altın","GIA sertifikalı elmas","1 karat","Özel kutu"] }
+                { id: 1, name: "Elmas Taşlı Altın Kolye", category: "necklaces", price: 3250, image: "./images/1.jpg", description: "Zarif ve şık altın kolye. 18 ayar altından üretilmiştir. Elmas ağırlığı: 0.25 karat.", features: ["18 ayar altın","0.25 karat elmas","Özel tasarım","Garanti sertifikası"] },
+                { id: 3, name: "Elmas Taşlı Sallantılı Küpe", category: "earrings", price: 2850, image: "./images/3.jpg", description: "Özel günler için ideal sallantılı elmas detaylı küpe.", features: ["14 ayar altın","Elmas detay","Hafif yapı","Rahat kullanım"] },
+                { id: 5, name: "Tek Taş Elmas Yüzük", category: "rings", price: 8500, image: "./images/14.jpg", description: "Nişan ve evlilik teklifleri için klasik tek taş yüzük.", features: ["18 ayar beyaz altın","GIA sertifikalı elmas","1 karat","Özel kutu"] }
             ];
             localStorage.setItem('products', JSON.stringify(fallbackProducts));
         }

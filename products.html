@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <title>Diana’s jewelry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="stylesheet" media="all" href="../css/style.css">
+    <link rel="stylesheet" media="all" href="./css/style.css">
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -61,7 +61,7 @@
         box-shadow: 0 4px 10px rgba(0,0,0,.12); 
         }
     </style>
-    <link rel="stylesheet" href="../css/chatbot.css">
+    <link rel="stylesheet" href="./css/chatbot.css">
 </head>
 <body>    <header id="header">
         <div class="container">
@@ -217,7 +217,7 @@
                 <div class="col">
                     <h3>Yönetim</h3>
                     <ul>
-                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                        <li><a href="./admin/index.html" target="_blank">Admin Panel</a></li>
                     </ul>
                 </div>
             </div>
@@ -229,10 +229,10 @@
 
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/chatbot.js"></script>
+    <script>window.jQuery || document.write("<script src='./js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+    <script src="./js/plugins.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/chatbot.js"></script>
     <script>
 // =============================
 // ÜRÜNLERİ YÜKLE VE SAYFALAMA
@@ -294,7 +294,7 @@ function renderProducts(page=1, perPage=12){
     if (!container) return;
 
     if (all.length === 0){
-        container.innerHTML = `<div style="text-align:center; padding:40px; color:#777;">Henüz ürün bulunmuyor. <a href="../admin/products-manage.html">Ürün eklemek için admin paneline gidin</a>.</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:#777;">Henüz ürün bulunmuyor. <a href="./admin/products-manage.html">Ürün eklemek için admin paneline gidin</a>.</div>`;
         if (topPag) topPag.style.display = 'none';
         if (bottomPag) bottomPag.style.display = 'none';
         return;
