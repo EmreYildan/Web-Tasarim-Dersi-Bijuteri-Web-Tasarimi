@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8 oldie" lang="tr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="tr"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Emre Mücevherat - Ana Sayfa</title>
+    <meta name="description" content="Emre Mücevherat - Altın, gümüş ve değerli taşlarla süslenmiş özel tasarım mücevher koleksiyonları">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
+    <link rel="stylesheet" media="all" href="../css/style.css">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+/* Modal Stilleri */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    z-index: 10000;
+}
+
+.modal-header {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.modal-close {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #ccc;
+}
+
+.modal-body {
+    padding: 30px;
+    line-height: 1.6;
+}
+
+/* Duyuru Kartları */
+#announcements {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+#announcements h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.announcement-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.announcement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.announcement-item h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.announcement-item p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.announcement-item .date {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.announcements-more {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.announcements-more .btn-more {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.announcements-more .btn-more:hover {
+    background: #555;
+}
+
+/* Erişilebilirlik İyileştirmeleri */
+/* Skip to main content linki */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #333;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100000;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus görünürlüğü artırma */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Klavye navigasyonu için hover efektlerini focus'a da ekle */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Görsel olarak gizli ama ekran okuyucular için erişilebilir */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Yüksek kontrast modu desteği */
+@media (prefers-contrast: high) {
+    body {
+        background: #fff;
+        color: #000;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* Reduced motion desteği - animasyonları azalt */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark mode desteği */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1a1a;
+        color: #e0e0e0;
+    }
+    
+    #header .container {
+        background: #2a2a2a;
+        border-bottom-color: #444;
+    }
+    
+    .modal-content {
+        background: #2a2a2a;
+        color: #e0e0e0;
+    }
+}
+
+/* Linkler için daha iyi kontrast */
+a {
+    color: #0066cc;
+}
+
+a:hover {
+    color: #004499;
+}
+
+/* Buton erişilebilirliği */
+button,
+.btn-add,
+.btn-more {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:disabled,
+.btn-add:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   MİKRO ANİMASYONLAR VE GEÇİŞ EFEKTLERİ
+   ============================================ */
+
+/* Fade-in animasyonu */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-in animasyonu */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale-in animasyonu */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse animasyonu */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Shimmer animasyonu (loading effect) */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Bounce animasyonu */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Sayfa yüklenme animasyonları */
+body {
+    animation: fadeIn 0.6s ease-out;
+}
+
+#header {
+    animation: slideIn 0.8s ease-out;
+}
+
+#menu {
+    animation: slideIn 0.8s ease-out 0.1s backwards;
+}
+
+#slider {
+    animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+/* Ürün kartları animasyonu */
+.products article {
+    animation: scaleIn 0.5s ease-out backwards;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.products article:nth-child(1) { animation-delay: 0.1s; }
+.products article:nth-child(2) { animation-delay: 0.2s; }
+.products article:nth-child(3) { animation-delay: 0.3s; }
+.products article:nth-child(4) { animation-delay: 0.4s; }
+.products article:nth-child(5) { animation-delay: 0.5s; }
+
+.products article:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.products article img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.products article:hover img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* Buton hover efektleri */
+.btn-add, .btn-more {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-add::before,
+.btn-more::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-add:hover::before,
+.btn-more:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-add:hover,
+.btn-more:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-add:active,
+.btn-more:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Link hover efektleri */
+#menu a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+#menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #667eea;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+#menu a:hover::after,
+#menu a:focus::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Duyuru kartları animasyonu */
+.announcement-item {
+    animation: fadeIn 0.6s ease-out backwards;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.announcement-item:nth-child(1) { animation-delay: 0.1s; }
+.announcement-item:nth-child(2) { animation-delay: 0.2s; }
+.announcement-item:nth-child(3) { animation-delay: 0.3s; }
+.announcement-item:nth-child(4) { animation-delay: 0.4s; }
+.announcement-item:nth-child(5) { animation-delay: 0.5s; }
+
+.announcement-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.announcement-item:hover::before {
+    left: 100%;
+}
+
+.announcement-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* İstatistik kartları animasyonu */
+#statistics-section [style*="background: rgba(255,255,255"] {
+    animation: scaleIn 0.6s ease-out backwards;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#statistics-section [style*="font-size: 48px"] {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+#statistics-section [style*="background: rgba(255,255,255"]:hover [style*="font-size: 48px"] {
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* Kategori kartları hover efekti */
+#featured-categories a {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#featured-categories a > div:first-of-type {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#featured-categories a:hover > div:first-of-type {
+    transform: scale(1.15) rotate(2deg);
+}
+
+#featured-categories a > div:last-of-type {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#featured-categories a:hover > div:last-of-type {
+    transform: translateY(-10px);
+}
+
+/* Modal animasyonu */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-close {
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #ff6b6b;
+}
+
+/* Logo animasyonu */
+#logo {
+    transition: all 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Sepet icon animasyonu */
+.right-links .ico-products {
+    transition: transform 0.3s ease;
+}
+
+.right-links a:hover .ico-products {
+    animation: bounce 0.6s ease;
+}
+
+/* Slider geçiş efektleri */
+.bx-wrapper .bx-pager-item a {
+    transition: all 0.3s ease;
+}
+
+.bx-wrapper .bx-pager-item a:hover {
+    transform: scale(1.3);
+}
+
+.bx-wrapper .bx-pager-item a.active {
+    animation: pulse 1s infinite;
+}
+
+/* Footer linkler hover efekti */
+#footer a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#footer a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+#footer a:hover::before {
+    width: 100%;
+}
+
+#footer a:hover {
+    transform: translateX(5px);
+    color: #667eea;
+}
+
+/* Form input focus efekti */
+input:focus,
+textarea:focus,
+select:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Scroll reveal animasyonu için */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Skeleton loading için shimmer efekti */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Quick Links hover efekti */
+.quick-links article {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-links article:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.quick-links .text {
+    transition: all 0.4s ease;
+}
+
+.quick-links article:hover .text {
+    transform: scale(1.1);
+}
+
+/* Breadcrumb animasyonu */
+#breadcrumbs li {
+    animation: slideIn 0.5s ease-out backwards;
+}
+
+#breadcrumbs li:nth-child(1) { animation-delay: 0.1s; }
+#breadcrumbs li:nth-child(2) { animation-delay: 0.2s; }
+#breadcrumbs li:nth-child(3) { animation-delay: 0.3s; }
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Pagination hover efekti */
+.pagination a {
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    transform: scale(1.1);
+    background: #667eea !important;
+    color: #fff !important;
+}
+
+.pagination .active a {
+    animation: pulse 2s infinite;
+}
+
+/* Glow efekti */
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 30px rgba(102, 126, 234, 0.6);
+    }
+}
+
+/* Reduced motion desteği - erişilebilirlik için */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+<link rel="stylesheet" href="../css/chatbot.css">
+</head>
+<body>
+
+<!-- Skip to main content link -->
+<a href="#main-content" class="skip-link">Ana içeriğe atla</a>
+
+    <header id="header" role="banner">
+        <div class="container">
+            <a href="index.html" id="logo" title="Emre Mücevherat Ana Sayfa" aria-label="Emre Mücevherat - Ana Sayfaya Git">
+                <span class="sr-only">Emre Mücevherat</span>
+            </a>
+            <div class="right-links">
+                <ul aria-label="Kullanıcı işlemleri">
+                    <li><a href="cart.html" aria-label="Sepet"><span class="ico-products" aria-hidden="true"></span></a></li>
+                    <li><a href="#" aria-label="Hesabım"><span class="ico-account" aria-hidden="true"></span>Hesap</a></li>
+                    <li><a href="#" aria-label="Çıkış yap"><span class="ico-signout" aria-hidden="true"></span>Çıkış</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav id="menu" role="navigation" aria-label="Ana menü">
+        <div class="container">
+            <button class="trigger" aria-label="Menüyü aç/kapat" aria-expanded="false"></button>
+            <ul role="menubar">
+                <li role="none"><a href="index.html" role="menuitem" aria-current="page">Ana Sayfa</a></li>
+                <li class="menu-item has-submenu" role="none">
+                    <a href="products.html" role="menuitem" aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Ürün kategorileri">
+                        <li role="none"><a href="new-collection.html" role="menuitem">Yeni Koleksiyon</a></li>
+                        <li role="none"><a href="necklaces.html" role="menuitem">Kolyeler</a></li>
+                        <li role="none"><a href="earrings.html" role="menuitem">Küpeler</a></li>
+                        <li role="none"><a href="rings.html" role="menuitem">Yüzükler</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item has-submenu" role="none">
+                    <a href="#birimlerimiz" role="menuitem" aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                    <ul class="submenu" role="menu" aria-label="Birimlerimiz">
+                        <li role="none"><a href="text-page.html" role="menuitem">Satış Birimi</a></li>
+                        <li role="none"><a href="text-page.html" role="menuitem">Müşteri Hizmetleri</a></li>
+                        <li role="none"><a href="text-page.html" role="menuitem">Tasarım Ekibi</a></li>
+                    </ul>
+                </li>
+
+                <li role="none"><a href="about.html" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="mission-vision.html" role="menuitem">Misyon-Vizyon</a></li>
+                <li role="none"><a href="announcements.html" role="menuitem">Duyurular</a></li>
+                <li role="none"><a href="statistics.html" role="menuitem">İstatistikler</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">İletişim</a></li>
+                <li role="none"><a href="cart.html" role="menuitem">Sepet</a></li>
+            </ul>
+        </div>
+        <!-- / container -->
+    </nav>
+    <!-- / navigation -->
+
+    <section id="slider" role="region" aria-label="Öne çıkan ürün slider" aria-live="polite">
+        <h2 class="sr-only">Öne Çıkan Ürünler</h2>
+        <ul id="slider-list">
+            <li style="background-image: url(../images/0.jpg)" role="group" aria-roledescription="slide" aria-label="1 / 3">
+                <h3>Genuine diamonds</h3>
+                <h2>Make your life better</h2>
+                <a href="products.html" class="btn-more" aria-label="Elmas koleksiyonu hakkında daha fazla bilgi">Read more</a>
+            </li>
+            <li style="background-image: url(../images/5.jpg)" role="group" aria-roledescription="slide" aria-label="2 / 3">
+                <h3>engagement ring</h3>
+                <h2>She will say yes</h2>
+                <a href="rings.html" class="btn-more" aria-label="Nişan yüzükleri hakkında daha fazla bilgi">Read more</a>
+            </li>
+            <li style="background-image: url(../images/02.jpg)" role="group" aria-roledescription="slide" aria-label="3 / 3">
+                <h3>golden bracelets</h3>
+                <h2>You deserve to be beauty</h2>
+                <a href="products.html" class="btn-more" aria-label="Altın bilezikler hakkında daha fazla bilgi">Read more</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Featured Categories Section -->
+    <div id="featured-categories" style="padding: 80px 0; background: #f9f9f9;">
+        <div class="container">
+            <h2 style="text-align: center; color: #333; font-size: 36px; margin-bottom: 20px; font-family: 'Novecentowide'; font-weight: 200; letter-spacing: 3px;">ÖNE ÇIKAN KOLEKSİYONLAR</h2>
+            <p style="text-align: center; color: #666; font-size: 16px; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">Her zevke uygun, özenle seçilmiş koleksiyonlarımızı keşfedin</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <!-- Yeni Koleksiyon -->
+                <a href="new-collection.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/0.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Yeni</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Premium Koleksiyon</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">En yeni ve özel tasarımlarımız</p>
+                    </div>
+                </a>
+
+                <!-- Kolyeler -->
+                <a href="necklaces.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/1.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Popüler</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Kolyeler</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">Zarafeti boyunuzda hissedin</p>
+                    </div>
+                </a>
+
+                <!-- Yüzükler -->
+                <a href="rings.html" style="position: relative; height: 400px; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.4s; display: block; text-decoration: none;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url(../images/14.jpg) center/cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; color: #fff;">
+                        <div style="font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; color: #f0c98b;">Özel</div>
+                        <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 10px; font-family: 'Novecentowide';">Yüzükler</h3>
+                        <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">Özel anlar için mükemmel seçim</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- / featured categories -->
+
+    <!-- Statistics Section -->
+    <div id="statistics-section" style="padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <h2 style="text-align: center; color: #fff; font-size: 32px; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px;">Sayılarla Emre Mücevherat</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">👥</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #667eea; margin-bottom: 10px;">15,420</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Mutlu Müşteri</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">💍</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #764ba2; margin-bottom: 10px;">850+</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Benzersiz Tasarım</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">🏪</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #667eea; margin-bottom: 10px;">12</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Mağaza</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.95); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 56px; margin-bottom: 15px;">🏆</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #764ba2; margin-bottom: 10px;">28</div>
+                    <div style="font-size: 18px; color: #666; font-weight: 500;">Ulusal Ödül</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="statistics.html" style="display: inline-block; padding: 15px 40px; background: #fff; color: #667eea; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='#fff'; this.style.transform='scale(1)'">Detaylı İstatistikleri Gör</a>
+            </div>
+        </div>
+    </div>
+    <!-- / statistics -->
+
+    <!-- Announcements Section -->
+    <section id="announcements" role="region" aria-labelledby="announcements-heading">
+        <div class="container">
+            <h2 id="announcements-heading">Duyurular ve Fırsatlar</h2>
+            <div class="announcements-grid" role="list">
+                <div class="announcement-item" data-content="<p>Yaz koleksiyonumuzda %30'a varan indirimler! Sınırlı süre için geçerli. Tüm mücevher kategorilerinde geçerli bu fırsat kaçmaz!</p><p>Kampanya tarihi: 15 Haziran - 30 Temmuz</p>">
+                    <h3>Yaz İndirimi Başladı!</h3>
+                    <p>Tüm ürünlerde %30'a varan indirim...</p>
+                    <span class="date">15 Haziran 2025</span>
+                </div>
+                <div class="announcement-item" data-content="<p>Yeni koleksiyonumuz 'Eternal Elegance' mağazalarımızda! Premium tasarımlar ve özel işçiliğin buluştuğu bu koleksiyonda benzersiz parçalar sizi bekliyor.</p><p>Koleksiyonu görmek için mağazalarımızı ziyaret edin.</p>">
+                    <h3>Yeni Koleksiyon: Eternal Elegance</h3>
+                    <p>Premium tasarımlarla dolu yeni koleksiyonumuz...</p>
+                    <span class="date">10 Haziran 2025</span>
+                </div>
+                <div class="announcement-item" data-content="<p>Evlilik teklifinde bulunacaklar için özel danışmanlık hizmeti! Uzman ekibimiz size en uygun yüzük seçiminde yardımcı olacak.</p><p>Randevu için: 0262 123 45 67</p>">
+                    <h3>Evlilik Teklifi Danışmanlığı</h3>
+                    <p>Özel anınız için uzman desteği...</p>
+                    <span class="date">5 Haziran 2025</span>
+                </div>
+                <div class="announcement-item" data-content="<p>Anneler Günü'ne özel hediye paketleri hazırladık! Sevdiklerinize özel tasarım kutular içinde sunulan mücevherlerimiz.</p><p>Ücretsiz hediye paketi için son gün: 12 Mayıs</p>">
+                    <h3>Anneler Günü Hediye Paketleri</h3>
+                    <p>Sevdikleriniz için özel hediye seçenekleri...</p>
+                    <span class="date">1 Mayıs 2025</span>
+                </div>
+                <div class="announcement-item" data-content="<p>Altın fiyatlarındaki değişiklikler hakkında müşterilerimizi bilgilendiriyoruz. Güncel fiyatlar için mağazalarımızı arayabilirsiniz.</p><p>Fiyat garantili alışveriş için özel koşullarımız mevcuttur.</p>">
+                    <h3>Altın Fiyatları Güncellendi</h3>
+                    <p>Güncel fiyatlar ve özel koşullar...</p>
+                    <span class="date">25 Nisan 2025</span>
+                </div>
+            </div>
+            <div class="announcements-more">
+                <a href="announcements.html" class="btn-more">Daha Fazla Duyuru</a>
+            </div>
+        </div>
+    </div>
+    <!-- / announcements -->
+
+    <main id="main-content" role="main">
+        <div class="container">
+            <div class="last-products">
+                <h2 id="last-products-heading">Son Eklenen Ürünler</h2>
+                <section class="products" id="last-products-container" aria-labelledby="last-products-heading" role="list">
+                    <!-- Ürünler yükleniyor... -->
+                    <div style="text-align: center; padding: 50px; width: 100%; color: #999;">
+                        <p>Ürünler yükleniyor...</p>
+                    </div>
+                </section>
+            </div>
+           
+        </div>
+    </main>
+
+    <!-- Modal for announcements -->
+    <div id="announcement-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display: none;" tabindex="-1">
+        <div class="modal-overlay" aria-hidden="true"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button class="modal-close" aria-label="Modalı kapat" type="button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" role="contentinfo">
+        <div class="container">
+            <div class="cols">
+                <div class="col">
+                    <h3>Sıkça Sorulan Sorular</h3>
+                    <ul>
+                        <li><a href="sıkçasorulansorular.html">Sipariş Nasıl Verilir?</a></li>
+                        <li><a href="sıkçasorulansorular.html">Kargo ve Teslimat</a></li>
+                        <li><a href="sıkçasorulansorular.html">İade Şartları</a></li>
+                        <li><a href="sıkçasorulansorular.html">Ödeme Yöntemleri</a></li>
+                        <li><a href="sıkçasorulansorular.html">Ürün Bakımı</a></li>
+                    </ul>
+                </div>
+                <div class="col media">
+                    <h3>Social media</h3>
+                    <ul class="social">
+                        <li><a href="#"><span class="ico ico-fb"></span>Facebook</a></li>
+                        <li><a href="#"><span class="ico ico-tw"></span>Twitter</a></li>
+                        <li><a href="#"><span class="ico ico-gp"></span>Google+</a></li>
+                        <li><a href="#"><span class="ico ico-pi"></span>Pinterest</a></li>
+                    </ul>
+                </div>
+                <div class="col contact">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Emre Mücevherat<br>Kocaeli Üniversitesi Teknoloji Fakültesi<br>Umuttepe Kampüsü, İzmit/Kocaeli</p>
+                    <p><span class="ico ico-em"></span><a href="mailto:info@emremucevherat.com">info@emremucevherat.com</a></p>
+                    <p><span class="ico ico-ph"></span>(0262) 303 10 00</p>
+                </div>
+                <div class="col newsletter">
+                    <h3>Web Tasarım</h3>
+                    <p>Bu web sitesi Kocaeli Üniversitesi Teknoloji Fakültesi Bilişim Sistemleri Mühendisliği öğrencisi Emre Yasin Yıldan tasarlanmıştır.</p>
+                    <p><strong>TBL303 Web Tasarımı Dersi</strong><br>2025-2026 Güz Dönemi</p>
+                </div>
+                <div class="col">
+                    <h3>Yönetim</h3>
+                    <ul>
+                        <li><a href="../admin/index.html" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copy">Copyright 2025 Emre Mücevherat. All rights reserved.</p>
+        </div>
+        <!-- / container -->
+    </footer>
+    <!-- / footer -->
+
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write("<script src='../js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+// ============================================
+// 1. TEST VERİLERİNİ YÜKLE (İLK ÇALIŞTIRMADA)
+// ============================================
+if (!localStorage.getItem('dataInitialized')) {
+    // Test Ürünleri
+    const testProducts = [
+        {
+            id: 1,
+            name: "Elmas Taşlı Altın Kolye",
+            category: "necklaces",
+            price: 3250,
+            image: "../images/1.jpg",
+            description: "Zarif ve şık altın kolye. 18 ayar altından üretilmiştir. Elmas ağırlığı: 0.25 karat",
+            features: ["18 ayar altın", "0.25 karat elmas", "Özel tasarım", "Garanti sertifikası"]
+        },
+        {
+            id: 2,
+            name: "İnci Detaylı Gümüş Kolye",
+            category: "necklaces",
+            price: 1450,
+            image: "../images/11.jpg",
+            description: "İnci detaylı şık gümüş kolye. Doğal inci kullanılmıştır.",
+            features: ["925 ayar gümüş", "Doğal inci", "Uzun ömürlü", "Su geçirmez"]
+        },
+        {
+            id: 3,
+            name: "Elmas Taşlı Sallantılı Küpe",
+            category: "earrings",
+            price: 2850,
+            image: "../images/3.jpg",
+            description: "Zarif sallantılı küpe modeli. Özel gün ve davetler için ideal.",
+            features: ["14 ayar altın", "Elmas detay", "Sallantılı tasarım", "Hafif ve rahat"]
+        },
+        {
+            id: 4,
+            name: "Doğal İnci Küpe",
+            category: "earrings",
+            price: 1250,
+            image: "../images/4.jpg",
+            description: "Doğal inciden oluşan küpe. Klasik ve zarif.",
+            features: ["Doğal inci", "Gümüş kaplama", "Günlük kullanım", "Alerjik tepki vermez"]
+        },
+        {
+            id: 5,
+            name: "Tek Taş Elmas Yüzük",
+            category: "rings",
+            price: 8500,
+            image: "../images/14.jpg",
+            description: "Nişan için ideal tek taş yüzük. GIA sertifikalı elmas.",
+            features: ["18 ayar beyaz altın", "GIA sertifikalı elmas", "1 karat", "Özel kutulu"]
+        },
+        {
+            id: 6,
+            name: "Klasik Altın Alyans",
+            category: "rings",
+            price: 2750,
+            image: "../images/2.jpg",
+            description: "14 ayar altın alyans. Evlilik için klasik tercih.",
+            features: ["14 ayar altın", "Mat ve parlak seçenekler", "Gravür hizmeti", "Ömür boyu garanti"]
+        }
+    ];
+    localStorage.setItem('products', JSON.stringify(testProducts));
+    
+    // Test Slider'ları
+    const testSliders = [
+        {
+            id: 1,
+            title: "Make your life better",
+            description: "Genuine diamonds",
+            image: "../images/0.jpg",
+            link: "product.html?id=1",
+            productId: 1,
+            order: 1,
+            active: true
+        },
+        
+        {
+            id: 2,
+            title: "She will say yes",
+            description: "engagement ring",
+            image: "../images/01.jpg",
+            link: "product.html?id=5",
+            productId: 5,
+            order: 2,
+            active: true
+        },
+        {
+            id: 3,
+            title: "You deserve to be beauty",
+            description: "golden bracelets",
+            image: "../images/02.jpg",
+            link: "product.html?id=3",
+            productId: 3,
+            order: 3,
+            active: true
+        }
+    ];
+    localStorage.setItem('sliders', JSON.stringify(testSliders));
+    
+    // Test Duyuruları
+    const testAnnouncements = [
+        {
+            id: 1,
+            title: "Yaz İndirimi Başladı!",
+            category: "campaign",
+            content: "<p>Yaz koleksiyonumuzda yüzde 30'a varan indirimler! Sınırlı süre için geçerli.</p><p>Kampanya tarihi: 15 Haziran - 30 Temmuz 2025</p>",
+            image: "../images/1.jpg",
+            file: "",
+            date: "2025-06-15",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 2,
+            title: "Yeni Koleksiyon: Eternal Elegance",
+            category: "news",
+            content: "<p>Yeni koleksiyonumuz mağazalarımızda! Premium tasarımlar sizi bekliyor.</p>",
+            image: "../images/11.jpg",
+            file: "",
+            date: "2025-06-10",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 3,
+            title: "Evlilik Teklifi Danışmanlığı",
+            category: "announcement",
+            content: "<p>Evlilik teklifinde bulunacaklar için özel danışmanlık hizmeti!</p><p>Randevu için: 0262 123 45 67</p>",
+            image: "",
+            file: "",
+            date: "2025-06-05",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 4,
+            title: "Ücretsiz Temizlik Hizmeti",
+            category: "announcement",
+            content: "<p>Tüm müşterilerimize ücretsiz mücevher temizliği sunuyoruz.</p>",
+            image: "",
+            file: "",
+            date: "2025-05-28",
+            active: true,
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: 5,
+            title: "Pırlanta Kolye Çekilişi",
+            category: "event",
+            content: "<p>1000 TL üzeri alışverişte çekilişe katılın!</p><p>Çekiliş tarihi: 30 Ağustos 2025</p>",
+            image: "../images/14.jpg",
+            file: "",
+            date: "2025-05-20",
+            active: true,
+            createdAt: new Date().toISOString()
+        }
+    ];
+    localStorage.setItem('announcements', JSON.stringify(testAnnouncements));
+    
+    localStorage.setItem('dataInitialized', 'true');
+}
+
+// ============================================
+// 2. SLIDER'LARI YÜKLE VE OTOMATİK DEĞİŞTİR
+// ============================================
+function loadSliders() {
+    const sliders = JSON.parse(localStorage.getItem('sliders')) || [];
+    const activeSliders = sliders.filter(s => s.active).sort((a, b) => a.order - b.order);
+    
+    if (activeSliders.length > 0) {
+        const sliderContainer = document.getElementById('slider-list');
+        sliderContainer.innerHTML = activeSliders.map(slider => {
+            var href = slider && slider.productId ? `product.html?id=${encodeURIComponent(slider.productId)}` : (slider && slider.link ? slider.link : 'products.html');
+            var bg = slider && slider.image ? slider.image : '../images/0.jpg';
+            var desc = slider && slider.description ? slider.description : '';
+            var title = slider && slider.title ? slider.title : '';
+            return `
+            <li style="background-image: url(${bg})">
+                <h3>${desc}</h3>
+                <h2>${title}</h2>
+                <a href="${href}" class="btn-more">Read more</a>
+            </li>`;
+        }).join('');
+
+        // bxSlider yeniden başlat (jQuery ve plugin yüklüyse)
+        initDynamicBxSlider();
+    }
+}
+
+// ============================================
+// 3. SON EKLENENLERİ YÜKLE
+// ============================================
+function loadLastProducts() {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const lastProducts = products.slice(-5).reverse(); // Son 5 ürünü ters sırada (en yeni en başta)
+    
+    if (lastProducts.length > 0) {
+        const productsContainer = document.getElementById('last-products-container');
+        if (productsContainer) {
+            productsContainer.innerHTML = lastProducts.map(product => `
+                <article role="listitem">
+                    <img src="${product.image}" alt="${product.name} ürün görseli" loading="lazy">
+                    <h3>${product.name}</h3>
+                    <h4 aria-label="Fiyat: ${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})} Türk Lirası">₺${parseFloat(product.price).toLocaleString('tr-TR', {minimumFractionDigits: 2})}</h4>
+                    <a href="product.html?id=${product.id}" class="btn-add" aria-label="${product.name} ürününün detaylarını görüntüle">Detayları Gör</a>
+                </article>
+            `).join('');
+            
+            // Erişilebilirlik geliştirmeleri
+            enhanceProductCards();
+            
+            // bxSlider için yeniden başlat
+            initLastProductsSlider();
+        }
+    }
+}
+
+// Son ürünler slider'ı
+let lastProductsSlider = null;
+function initLastProductsSlider() {
+    if (!window.jQuery || !jQuery.fn.bxSlider) {
+        console.warn('jQuery veya bxSlider yüklenmemiş');
+        return;
+    }
+    
+    // Küçük gecikme ile DOM'un hazır olmasını bekle
+    setTimeout(function() {
+        const $container = jQuery('#last-products-container');
+        
+        if ($container.length === 0) {
+            console.warn('last-products-container bulunamadı');
+            return;
+        }
+        
+        const articleCount = $container.children('article').length;
+        console.log('Yüklenecek ürün sayısı:', articleCount);
+        
+        if (articleCount > 0) {
+            // Eğer daha önce başlatılmışsa destroy et
+            if (lastProductsSlider) {
+                try {
+                    lastProductsSlider.destroySlider();
+                    lastProductsSlider = null;
+                } catch(e) {
+                    console.error('Slider destroy hatası:', e);
+                }
+            }
+            
+            // Yeni slider başlat
+            lastProductsSlider = $container.bxSlider({
+                slideWidth: 235,
+                minSlides: 1,
+                maxSlides: 5,
+                slideMargin: 0,
+                pager: false,
+                nextText: '',
+                prevText: '',
+                infiniteLoop: true,
+                hideControlOnEnd: false,
+                moveSlides: 1,
+                responsive: true
+            });
+            
+            console.log('Last products slider başlatıldı');
+        } else {
+            console.warn('Gösterilecek ürün yok');
+        }
+    }, 100);
+}
+
+// ============================================
+// 4. DUYURULARI YÜKLE
+// ============================================
+function loadAnnouncements() {
+    const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+    const activeAnnouncements = announcements
+        .filter(a => a.active)
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+    
+    if (activeAnnouncements.length > 0) {
+        const announcementsContainer = document.querySelector('.announcements-grid');
+        announcementsContainer.innerHTML = activeAnnouncements.map(announcement => `
+            <div class="announcement-item" 
+                 onclick="showAnnouncementModal(${announcement.id})"
+                 role="listitem"
+                 tabindex="0"
+                 aria-label="${announcement.title} - ${new Date(announcement.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}">
+                <h3>${announcement.title}</h3>
+                <p>${announcement.content.replace(/<[^>]*>/g, '').substring(0, 100)}...</p>
+                <time class="date" datetime="${announcement.date}">${new Date(announcement.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </div>
+        `).join('');
+        
+        // Klavye desteği ekle
+        enhanceAnnouncementCards();
+    }
+}
+
+// ============================================
+// 5. DUYURU MODAL GÖSTER
+// ============================================
+function showAnnouncementModal(announcementId) {
+    const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+    const announcement = announcements.find(a => a.id === announcementId);
+    
+    if (announcement) {
+        // Şu anki focus'u kaydet
+        window.lastFocusedElement = document.activeElement;
+        
+        document.getElementById('modal-title').textContent = announcement.title;
+        
+        let modalContent = announcement.content;
+        
+        if (announcement.image) {
+            modalContent = `<img src="${announcement.image}" alt="${announcement.title}" style="max-width: 100%; margin-bottom: 20px; border-radius: 8px;">` + modalContent;
+        }
+        
+        if (announcement.file) {
+            modalContent += `<p><strong>Ek Dosya:</strong> <a href="${announcement.file}" target="_blank" aria-label="Duyuru ek dosyasını indir">İndir</a></p>`;
+        }
+        
+        document.getElementById('modal-content').innerHTML = modalContent;
+        const modal = document.getElementById('announcement-modal');
+        modal.style.display = 'flex';
+        modal.removeAttribute('aria-hidden');
+        
+        // Focus'u modal içine al
+        setTimeout(() => {
+            const closeButton = modal.querySelector('.modal-close');
+            if (closeButton) {
+                closeButton.focus();
+                trapFocus(modal.querySelector('.modal-content'));
+            }
+        }, 100);
+        
+        // Body scroll'u engelle
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// ============================================
+// 6. MODAL KAPATMA
+// ============================================
+function closeModal() {
+    const modal = document.getElementById('announcement-modal');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    
+    // Body scroll'u geri aç
+    document.body.style.overflow = '';
+    
+    // Focus'u geri döndür
+    if (window.lastFocusedElement) {
+        window.lastFocusedElement.focus();
+        window.lastFocusedElement = null;
+    }
+}
+
+// ============================================
+// 7. ERİŞİLEBİLİRLİK FONKSİYONLARI
+// ============================================
+
+// Klavye navigasyonu için ESC tuşu desteği
+document.addEventListener('keydown', function(e) {
+    // ESC tuşu ile modal kapatma
+    if (e.key === 'Escape' || e.key === 'Esc') {
+        const modal = document.getElementById('announcement-modal');
+        if (modal && modal.style.display !== 'none') {
+            closeModal();
+        }
+    }
+});
+
+// Modal açıldığında focus yönetimi
+function trapFocus(element) {
+    const focusableElements = element.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    element.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+}
+
+// Menü erişilebilirliği
+function initMenuAccessibility() {
+    const menuItems = document.querySelectorAll('.menu-item.has-submenu > a');
+    
+    menuItems.forEach(item => {
+        // Klavye ile menü açma/kapama
+        item.addEventListener('keydown', function(e) {
+            const submenu = this.nextElementSibling;
+            
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                submenu.style.display = isExpanded ? 'none' : 'block';
+            }
+            
+            if (e.key === 'Escape') {
+                this.setAttribute('aria-expanded', 'false');
+                submenu.style.display = 'none';
+                this.focus();
+            }
+        });
+    });
+    
+    // Mobil menü toggle için ARIA
+    const menuTrigger = document.querySelector('#menu .trigger');
+    if (menuTrigger) {
+        menuTrigger.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+    }
+}
+
+// Announcement kartlarına role ve klavye desteği ekle
+function enhanceAnnouncementCards() {
+    const cards = document.querySelectorAll('.announcement-item');
+    cards.forEach(card => {
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        
+        // Klavye ile açma
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+}
+
+// Ürün kartlarına erişilebilirlik ekle
+function enhanceProductCards() {
+    const productCards = document.querySelectorAll('.products article');
+    productCards.forEach(card => {
+        card.setAttribute('role', 'listitem');
+        const link = card.querySelector('a');
+        const title = card.querySelector('h3');
+        const price = card.querySelector('h4');
+        
+        if (link && title && price) {
+            link.setAttribute('aria-label', `${title.textContent} - ${price.textContent} - Detayları görüntüle`);
+        }
+    });
+}
+
+// ============================================
+// 8. SAYFA YÜKLENDİĞİNDE ÇALIŞTIR
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sayfa yükleniyor...');
+    
+    // İlk önce veriyi yükle
+    loadSliders();
+    loadAnnouncements();
+    loadLastProducts();
+    
+    // Erişilebilirlik özelliklerini başlat
+    initMenuAccessibility();
+    
+    // Kartların yüklenmesini bekle
+    setTimeout(() => {
+        enhanceAnnouncementCards();
+        enhanceProductCards();
+    }, 500);
+    
+    // Modal işlemleri
+    const modal = document.getElementById('announcement-modal');
+    const closeBtn = document.querySelector('.modal-close');
+    const overlay = document.querySelector('.modal-overlay');
+    
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            closeModal();
+            // Focus'u tetikleyen elemente geri döndür
+            if (window.lastFocusedElement) {
+                window.lastFocusedElement.focus();
+            }
+        };
+        
+        // Enter ve Space tuşları için
+        closeBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    }
+    
+    if (overlay) {
+        overlay.onclick = closeModal;
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    
+    console.log('Tüm içerik yüklendi');
+});
+
+// =============================
+// DİNAMİK BXSLIDER YÖNETİMİ
+// =============================
+let sliderInstance = null;
+function initDynamicBxSlider(){
+    if(!window.jQuery || !jQuery.fn.bxSlider) return;
+    // Eski instance varsa temizle (bxSlider destroy için wrapper yapısını kaldırır)
+    if(sliderInstance){
+        try { sliderInstance.destroySlider(); } catch(e) {}
+        sliderInstance = null;
+    }
+    // Responsive yeniden başlangıç: yüksekliği kaybetmemesi için min-height ekle.
+    const $ul = jQuery('#slider ul');
+    if($ul.children('li').length === 0) return;
+    $ul.children('li').css({minHeight:'500px'}); // Görseller background olduğundan yüklenmeden önce siyah boşluk olmaması için.
+    sliderInstance = $ul.bxSlider({
+        controls: true,
+        auto: true,
+        mode: 'fade',
+        preventDefaultSwipeX: false,
+        pause: 5000,
+        speed: 800,
+        adaptiveHeight: true,
+        onSliderResize: function(){
+            // Yeniden boyutlanınca slaytların minHeight'ını koru.
+            $ul.children('li').css({minHeight:'500px'});
+        }
+    });
+}
+
+// Resize debounce: yeniden boyutlandırmada siyah ekranı önlemek için destroy + re-init
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        initDynamicBxSlider();
+    }, 250);
+});
+
+// Scroll reveal animasyonları
+function initScrollReveal() {
+    // Intersection Observer API kullanarak scroll'da animasyon tetikle
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    // Animasyon yapılacak elementleri seç
+    const elementsToReveal = document.querySelectorAll(`
+        #statistics-section,
+        #featured-categories,
+        .announcements,
+        .quick-links,
+        #last-products
+    `);
+
+    elementsToReveal.forEach(el => {
+        if (el) {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        }
+    });
+}
+
+// Sayfa yüklendiğinde scroll reveal'i başlat
+setTimeout(() => {
+    initScrollReveal();
+}, 1000);
+</script>
+
+<!-- Chatbot Widget -->
+<script src="../js/chatbot.js"></script>
+
+</body>
+</html>
